@@ -40,30 +40,30 @@ export default function CountdownTimer({ targetDate }: { targetDate: Date }) {
   }, [targetDate])
 
   return (
-    <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-center">
+    <div className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-6 text-center w-full max-w-lg mx-auto">
       <div className="flex flex-col items-center">
-        <div className="bg-secondary/80 w-20 h-20 md:w-24 md:h-24 rounded-lg flex items-center justify-center">
-          <span className="text-3xl md:text-4xl font-bold">{timeLeft.days}</span>
+        <div className="bg-secondary/80 w-full aspect-square rounded-lg flex items-center justify-center">
+          <span className="text-xl sm:text-2xl md:text-4xl font-bold">{timeLeft.days}</span>
         </div>
-        <span className="mt-2 text-sm uppercase">Tage</span>
+        <span className="mt-2 text-xs sm:text-sm uppercase">Tage</span>
       </div>
       <div className="flex flex-col items-center">
-        <div className="bg-secondary w-20 h-20 md:w-24 md:h-24 rounded-lg flex items-center justify-center">
-          <span className="text-3xl md:text-4xl font-bold">{timeLeft.hours}</span>
+        <div className="bg-secondary w-full aspect-square rounded-lg flex items-center justify-center">
+          <span className="text-xl sm:text-2xl md:text-4xl font-bold">{timeLeft.hours}</span>
         </div>
-        <span className="mt-2 text-sm uppercase">Stunden</span>
+        <span className="mt-2 text-xs sm:text-sm uppercase">Stunden</span>
       </div>
       <div className="flex flex-col items-center">
-        <div className="bg-primary/90 w-20 h-20 md:w-24 md:h-24 rounded-lg flex items-center justify-center">
-          <span className="text-3xl md:text-4xl font-bold">{timeLeft.minutes}</span>
+        <div className="bg-primary/90 w-full aspect-square rounded-lg flex items-center justify-center">
+          <span className="text-xl sm:text-2xl md:text-4xl font-bold">{timeLeft.minutes}</span>
         </div>
-        <span className="mt-2 text-sm uppercase">Minuten</span>
+        <span className="mt-2 text-xs sm:text-sm uppercase">Minuten</span>
       </div>
       <div className="flex flex-col items-center">
-        <div className="bg-primary w-20 h-20 md:w-24 md:h-24 rounded-lg flex items-center justify-center">
-          <span className="text-3xl md:text-4xl font-bold">{timeLeft.seconds}</span>
+        <div className="bg-primary w-full aspect-square rounded-lg flex items-center justify-center">
+          <span className="text-xl sm:text-2xl md:text-4xl font-bold">{timeLeft.seconds}</span>
         </div>
-        <span className="mt-2 text-sm uppercase">Sekunden</span>
+        <span className="mt-2 text-xs sm:text-sm uppercase">Sekunden</span>
       </div>
     </div>
   )
