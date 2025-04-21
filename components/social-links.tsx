@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Mail } from "lucide-react"
+import { Mail } from "lucide-react"
 
 export default function SocialLinks() {
   return (
