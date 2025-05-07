@@ -14,6 +14,7 @@ export default function Header({
   const [scrolled, setScrolled] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showCompact, setShowCompact] = useState(false);
+  console.log(scrolled, showCompact);
 
   useEffect(() => {
     const handleScroll = () => {
