@@ -12,7 +12,7 @@ const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
   return (
     <section
       {...storyblokEditable(blok)}
-      className="relative min-h-screen w-full flex flex-col justify-center items-center"
+      className="relative min-h-screen w-full"
       style={{
         backgroundImage: `url('${backgroundImage}')`,
         backgroundSize: "cover",
@@ -20,12 +20,12 @@ const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="w-100 mx-auto text-center">
+      <div className={`w-80 h-screen pt-[clamp(200px,35vh,350px)] pb-20 gap-4 mx-auto flex flex-col items-center justify-between text-center`}>
         <Title variant="h1">
-          {blok.title || "Welcome to Sprängi"}
+          {blok.title}
         </Title>
 
-        <div className="flex flex-col justify-center gap-4 mt-8 max-w-64 mx-auto">
+        <div className="flex flex-col w-64 justify-center gap-4">
           {blok.buttons &&
             blok.buttons.map((button) => (
               <Button key={button._uid} blok={button} />

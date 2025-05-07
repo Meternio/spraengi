@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, CalendarRange, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import ButtonReserve from "@/components/ButtonReserve";
 
 export default function Header({
   datasources,
@@ -80,7 +81,7 @@ export default function Header({
                 <Phone className="w-5 h-5" />
               </Link>
             </Button>
-            <Button
+            <ButtonReserve
               aria-label="Reserviere bei uns"
               variant={"ghost"}
               size={"icon"}
@@ -90,7 +91,7 @@ export default function Header({
               }}
             >
               <CalendarRange className="w-5 h-5" />
-            </Button>
+            </ButtonReserve>
             <Button
               variant={"ghost"}
               size={"icon"}
