@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack --experimental-https ",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pull-components": "storyblok pull-components --space 335981",
+    "generate-types": "storyblok generate-typescript-typedefs --sourceFilePaths ./components.335981.json --destinationFilePath ./component-types-sb.d.ts",
+    "generate": "npm run pull-components && npm run generate-types"
   },
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.80",
@@ -19,7 +22,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.2.0",
-    "tw-animate-css": "^1.2.7"
+    "tw-animate-css": "^1.2.7",
+    "zustand": "^5.0.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
