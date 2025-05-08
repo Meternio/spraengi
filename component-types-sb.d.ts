@@ -4,7 +4,7 @@ import type { ISbStoryData } from "storyblok";
 export interface ButtonStoryblok {
   title?: string;
   type?: "" | "link" | "localScroll" | "reserve";
-  variant?: "" | "primary" | "secondary";
+  variant?: "" | "primary" | "outline";
   href?: string;
   component: "button";
   _uid: string;
@@ -37,7 +37,8 @@ export interface AssetStoryblok {
 }
 
 export interface HeroStoryblok {
-  asset?: AssetStoryblok;
+  image?: AssetStoryblok;
+  youtube_video_id?: string;
   title?: string;
   buttons?: ButtonStoryblok[];
   component: "hero";

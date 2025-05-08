@@ -61,11 +61,11 @@ export default function Header({
           <div className="flex justify-center items-center">
             <Link href="/">
               <Image
-                src={datasources?.theming?.logo}
+                src={`${datasources?.theming?.logo}/m/212x0`}
                 alt="Sprängi Bar & Cafe Logo"
                 className="object-contain"
-                width={230}
-                height={112}
+                width={212}
+                height={103}
               />
             </Link>
           </div>
