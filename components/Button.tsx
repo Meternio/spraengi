@@ -2,17 +2,21 @@
 
 import { Button as ButtonComponent } from "@/components/ui/button";
 import { ButtonStoryblok } from "@/component-types-sb";
+import { createSlug } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import ButtonReserve from "@/components/ButtonReserve";
 import Link from "next/link";
 
-const Button: React.FC<{ blok: ButtonStoryblok }> = ({ blok }) => {
-  const variant = blok.variant === "primary" ? "default" : "outline";
-  const sharedClassNames = "rounded-full uppercase cursor-pointer";
+const Button: React.FC<{ blok: ButtonStoryblok, className?: string }> = ({ blok, className }) => {
+  const variant = blok.variant === "primary" ? "default" : blok.variant as "outline" | "default" | "ghost" | "secondary" | "destructive" | "link" | null | undefined;
+  const sharedClassNames = cn('rounded-full uppercase cursor-pointer', className);
 
   const handleLocalScroll = () => {
     if (!blok.href) return;
 
-    const element = document.getElementById(blok.href);
+    const slug = createSlug(blok.href);
+
+    const element = document.getElementById(slug);
     if (element) {
       element.scrollIntoView({
         behavior: "smooth",

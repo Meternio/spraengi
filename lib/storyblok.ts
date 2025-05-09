@@ -1,4 +1,5 @@
-import { apiPlugin, storyblokInit, ISbResponse } from "@storyblok/react/rsc";
+import { apiPlugin, storyblokInit } from "@storyblok/react/rsc";
+import type { ISbStoryData } from "@storyblok/react/rsc"
 
 import Page from "@/components/Page";
 import Hero from "@/components/Hero";
@@ -23,7 +24,7 @@ export const fetchStory = async (version: 'draft' | 'published', slug?: string[]
     return fetch(`
     https://api.storyblok.com/v2/cdn/stories${correctSlug}?version=${version}&token=${process.env.NEXT_PUBLIC_STORYBLOK_TOKEN}`,
         { next: { tags: ['cms'] }, cache: version === 'published' ? 'default' : 'no-store' }
-    ).then((res) => res.json()) as Promise<{ story: ISbResponse }>;
+    ).then((res) => res.json()) as Promise<{ story: ISbStoryData }>;
 }
 
 export const fetchDatasource = async (slug: string | string[]) => {

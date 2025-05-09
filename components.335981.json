@@ -5,7 +5,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-07T14:39:26.697Z",
-      "updated_at": "2025-05-07T15:41:42.017Z",
+      "updated_at": "2025-05-08T17:00:17.751Z",
       "id": 7311926,
       "schema": {
         "title": {
@@ -50,6 +50,16 @@
               "_uid": "6be3824e-d14d-4983-9a09-e600681abaa0",
               "value": "outline",
               "name": "outline"
+            },
+            {
+              "_uid": "3b01daba-d5de-4f80-9918-709a7b2d6276",
+              "value": "ghost",
+              "name": "ghost"
+            },
+            {
+              "_uid": "1143eaaf-f23f-4802-a8ae-72bbe1ed3992",
+              "value": "link",
+              "name": "link"
             }
           ],
           "id": "xYxQ4W1HRP6ppqRaXDK2Ug"
@@ -180,9 +190,15 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-07T13:14:34.909Z",
-      "updated_at": "2025-05-07T13:14:34.909Z",
+      "updated_at": "2025-05-08T16:46:28.619Z",
       "id": 7311397,
-      "schema": {},
+      "schema": {
+        "name": {
+          "type": "text",
+          "pos": 0,
+          "id": "14K2YqY8REaRUt1m0ohy9g"
+        }
+      },
       "image": null,
       "preview_field": null,
       "is_root": false,

@@ -4,19 +4,13 @@ import {
     StoryblokServerComponent,
   } from "@storyblok/react/rsc";
   import React from "react";
+  import { SectionStoryblok } from "@/component-types-sb";
+  import { createSlug } from "@/lib/utils";
   
-  interface SbSectionData extends SbBlokData {
-    body: SbBlokData[];
-  }
-  
-  interface SectionProps {
-    blok: SbSectionData;
-  }
-  
-  const Section: React.FunctionComponent<SectionProps> = ({ blok }) => {
+  const Section: React.FunctionComponent<SectionStoryblok> = ({ blok }) => {
     return (
-      <section {...storyblokEditable(blok)}>
-        {blok.body.map((nestedBlok) => (
+      <section {...storyblokEditable(blok)} id={createSlug(blok.name)} className="min-h-screen">
+        {blok?.body?.map((nestedBlok: SbBlokData) => (
           <StoryblokServerComponent blok={nestedBlok} key={nestedBlok._uid} />
         ))}
       </section>

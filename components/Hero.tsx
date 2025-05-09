@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { storyblokEditable } from "@storyblok/react/rsc";
 import { HeroStoryblok } from "@/component-types-sb";
@@ -15,6 +15,7 @@ const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
     ? `https://www.youtube.com/embed/${blok.youtube_video_id}?autoplay=1&mute=1&loop=1&controls=0&playlist=${blok.youtube_video_id}&enablejsapi=1`
     : "";
 
+  const sectionRef = useRef<HTMLDivElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isInView, setIsInView] = useState(false);
 
@@ -26,14 +27,14 @@ const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
       { threshold: 0 }
     );
 
-    const iframeElement = iframeRef.current;
-    if (iframeElement) {
-      observer.observe(iframeElement);
+    const sectionElement = sectionRef.current;
+    if (sectionElement) {
+      observer.observe(sectionElement);
     }
 
     return () => {
-      if (iframeElement) {
-        observer.unobserve(iframeElement);
+      if (sectionElement) {
+        observer.unobserve(sectionElement);
       }
     };
   }, []);
@@ -56,10 +57,13 @@ const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
 
   return (
     <section
+      ref={sectionRef}
       {...storyblokEditable(blok)}
       className="relative min-h-screen w-full overflow-hidden"
       style={{
-        backgroundImage: blok.youtube_video_id ? undefined : `url('${backgroundImage}')`,
+        backgroundImage: blok.youtube_video_id
+          ? undefined
+          : `url('${backgroundImage}')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
@@ -84,7 +88,11 @@ const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
         </div>
       ) : null}
 
-      <div className={`w-80 h-screen pt-[clamp(200px,35vh,350px)] pb-20 gap-4 mx-auto flex flex-col items-center justify-between text-center relative z-10`}>
+      <div
+        className={`w-80 h-screen min-h-fit pt-[clamp(245px,35vh,350px)] pb-20 gap-4 mx-auto flex flex-col items-center justify-between text-center relative z-10 opacity-0 transition-opacity duration-1000 ${
+          isInView && "!opacity-100"
+        }`}
+      >
         <Title variant="h1">{blok.title}</Title>
 
         <div className="flex flex-col w-64 justify-center gap-4">

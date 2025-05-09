@@ -4,7 +4,7 @@ import type { ISbStoryData } from "storyblok";
 export interface ButtonStoryblok {
   title?: string;
   type?: "" | "link" | "localScroll" | "reserve";
-  variant?: "" | "primary" | "outline";
+  variant?: "" | "primary" | "outline" | "ghost" | "link";
   href?: string;
   component: "button";
   _uid: string;
@@ -56,6 +56,7 @@ export interface PageStoryblok {
 }
 
 export interface SectionStoryblok {
+  name?: string;
   component: "section";
   _uid: string;
   [k: string]: any;

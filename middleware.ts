@@ -4,10 +4,10 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const comingSoonUrl = '/coming-soon';
   
-  const isStoryblokRequest = 
-    request.nextUrl.searchParams.has('_storyblok') ||
+  const isStoryblokRequest = true;
+    /*request.nextUrl.searchParams.has('_storyblok') ||
     request.nextUrl.searchParams.has('_storyblok_tk') ||
-    request.headers.get('referer')?.includes('app.storyblok.com');
+    request.headers.get('referer')?.includes('app.storyblok.com');*/
 
   const isComingSoonPage = request.nextUrl.pathname === comingSoonUrl;
 
