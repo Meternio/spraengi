@@ -139,9 +139,6 @@ export default function Header({
                 variant={"ghost"}
                 size={"icon"}
                 className="cursor-pointer"
-                onClick={() => {
-                  console.log("Reserviere bei uns")
-                }}
               >
                 <CalendarRange className="w-5 h-5" />
               </ButtonReserve>

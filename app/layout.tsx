@@ -4,6 +4,7 @@ import { fetchDatasource } from "@/lib/storyblok";
 import { DatasourcesStoreProvider } from "@/components/DatasourcesStoreProvider";
 import "./globals.css";
 import StoryblokProvider from "@/components/StoryblokProvider";
+import QueryProvider from "@/components/QueryProvider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,7 +38,7 @@ export default async function RootLayout({
               isLoading: false,
             }}
           >
-            {children}
+            <QueryProvider>{children}</QueryProvider>
           </DatasourcesStoreProvider>
         </StoryblokProvider>
       </body>

@@ -36,6 +36,21 @@ export interface AssetStoryblok {
   [k: string]: any;
 }
 
+export interface EventStoryblok {
+  date?: string;
+  image?: AssetStoryblok;
+  component: "event";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface EventGridStoryblok {
+  count_events?: string;
+  component: "event_grid";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface HeroStoryblok {
   image?: AssetStoryblok;
   youtube_video_id?: string;
@@ -48,7 +63,7 @@ export interface HeroStoryblok {
 
 export interface PageStoryblok {
   header?: any;
-  body?: (ButtonStoryblok | HeroStoryblok | PageStoryblok | SectionStoryblok)[];
+  body?: (HeroStoryblok | SectionStoryblok)[];
   footer?: any;
   component: "page";
   _uid: string;
@@ -57,6 +72,8 @@ export interface PageStoryblok {
 
 export interface SectionStoryblok {
   name?: string;
+  show_moving_name?: boolean;
+  body?: EventGridStoryblok[];
   component: "section";
   _uid: string;
   [k: string]: any;

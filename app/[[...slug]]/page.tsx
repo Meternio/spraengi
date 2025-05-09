@@ -1,5 +1,7 @@
 import { StoryblokStory } from "@storyblok/react/rsc";
 import { fetchStory } from "@/lib/storyblok";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export async function generateStaticParams() {
   return [];
@@ -7,9 +9,17 @@ export async function generateStaticParams() {
 
 type Params = Promise<{ slug?: string[] }>;
 
-export default async function Home({ params }: { params: Params }) {
+export default async function Page({ params }: { params: Params }) {
   const slug = (await params).slug;
   const pageData = await fetchStory("published", slug);
 
-  return <StoryblokStory story={pageData.story} />;
+  return (
+    <>
+      <Header
+        pageData={pageData.story}
+      />
+      <StoryblokStory story={pageData.story} />
+      <Footer/>
+    </>
+  );
 }
