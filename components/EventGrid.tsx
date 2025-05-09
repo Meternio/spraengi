@@ -23,13 +23,24 @@ const EventGrid: React.FC<{ blok: EventGridStoryblok }> = ({ blok }) => {
 
   if (isLoading) {
     return (
-      <div
-        {...storyblokEditable(blok)}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 min-h-[200px] place-items-center"
-      >
-        <div className="col-span-full flex flex-col items-center justify-center text-gray-500">
-          <Loader2 className="h-8 w-8 animate-spin mb-2" />
-          <p>Loading events...</p>
+      <div {...storyblokEditable(blok)} className="grid grid-cols-1 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+          {[...Array(3)].map((_, index) => (
+            <div
+              key={index}
+              className={`relative w-full lg:aspect-[1.5/1] rounded-lg overflow-hidden group h-full min-h-100 lg:h-100 ${
+                index === 0 ? "md:col-span-2" : ""
+              }`}
+            >
+              <div className="absolute inset-0 bg-gray-200 animate-pulse"></div>
+              <div className="relative h-full inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-6">
+                <div className="text-white flex flex-col h-full gap-4">
+                  <div className="h-4 bg-gray-300 rounded w-1/3 animate-pulse mb-2"></div>
+                  <div className="h-6 bg-gray-300 rounded w-2/3 animate-pulse"></div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     );
