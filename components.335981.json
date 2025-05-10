@@ -176,7 +176,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-10T08:29:45.928Z",
-      "updated_at": "2025-05-10T14:38:33.736Z",
+      "updated_at": "2025-05-10T15:24:34.412Z",
       "id": 7323917,
       "schema": {
         "count_items": {
@@ -227,6 +227,11 @@
               "_uid": "fc9172cb-3fd7-49d0-abd5-48c85ea5865c",
               "value": "team",
               "name": "Team"
+            },
+            {
+              "_uid": "88cfd7ac-4975-4c4e-b85c-16ffd9cce20b",
+              "value": "partner",
+              "name": "Partner"
             }
           ],
           "id": "Ww0mVB1gSZqb4kcpvvAdPA"
@@ -240,6 +245,51 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "carousel",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
+      "name": "contact_grid",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-05-10T14:56:52.512Z",
+      "updated_at": "2025-05-10T14:58:56.617Z",
+      "id": 7324175,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "id": "zTACOHygTqem-CYQ1N9GLA"
+        },
+        "google_maps_link": {
+          "type": "text",
+          "pos": 1,
+          "id": "u20WSIoaQt2k2gmrAStJRg"
+        },
+        "icon_blocks": {
+          "type": "bloks",
+          "pos": 2,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "icon_block"
+          ],
+          "id": "bQx3xUMoSXqcZg009Dld2A"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "contact_grid",
       "component_group_uuid": null,
       "color": null,
       "icon": null,
@@ -596,6 +646,39 @@
       "metadata": {}
     },
     {
+      "name": "partner",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-05-10T15:20:26.717Z",
+      "updated_at": "2025-05-10T15:20:41.053Z",
+      "id": 7324178,
+      "schema": {
+        "image": {
+          "type": "asset",
+          "pos": 0,
+          "filetypes": [
+            "images"
+          ],
+          "id": "vx4ppAg4Q4mSDveDDTtMIA"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "partner",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
       "name": "product",
       "display_name": null,
       "description": "",
@@ -638,7 +721,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-07T13:14:34.909Z",
-      "updated_at": "2025-05-10T14:20:31.930Z",
+      "updated_at": "2025-05-10T14:59:14.348Z",
       "id": 7311397,
       "schema": {
         "name": {
@@ -662,7 +745,8 @@
             "card",
             "icon_block_grid",
             "games_carousel",
-            "carousel"
+            "carousel",
+            "contact_grid"
           ],
           "id": "Gux2H8z5RTClGLfZUl5Vmg"
         }

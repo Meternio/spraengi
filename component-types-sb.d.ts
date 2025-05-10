@@ -51,8 +51,17 @@ export interface CardStoryblok {
 export interface CarouselStoryblok {
   count_items?: string;
   count_items_per_view?: "" | "3" | "4";
-  type?: "" | "drinks" | "food" | "games" | "team";
+  type?: "" | "drinks" | "food" | "games" | "team" | "partner";
   component: "carousel";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface ContactGridStoryblok {
+  title?: string;
+  google_maps_link?: string;
+  icon_blocks?: IconBlockStoryblok[];
+  component: "contact_grid";
   _uid: string;
   [k: string]: any;
 }
@@ -125,6 +134,13 @@ export interface PageStoryblok {
   [k: string]: any;
 }
 
+export interface PartnerStoryblok {
+  image?: AssetStoryblok;
+  component: "partner";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface ProductStoryblok {
   description?: string;
   image?: AssetStoryblok;
@@ -143,6 +159,7 @@ export interface SectionStoryblok {
     | IconBlockGridStoryblok
     | GamesCarouselStoryblok
     | CarouselStoryblok
+    | ContactGridStoryblok
   )[];
   component: "section";
   _uid: string;
