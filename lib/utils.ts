@@ -14,3 +14,20 @@ export function createSlug(name: string) {
     .replace(/^-+|-+$/g, ""); // Trim - from start and end of text
   return slug;
 }
+
+export function scrollTo(offset: number, callback: () => void) {
+  const fixedOffset = offset.toFixed();
+  const onScroll = function () {
+    if (window.pageYOffset.toFixed() === fixedOffset) {
+      window.removeEventListener("scroll", onScroll);
+      callback();
+    }
+  };
+
+  window.addEventListener("scroll", onScroll);
+  onScroll();
+  window.scrollTo({
+    top: offset,
+    behavior: "smooth",
+  });
+}

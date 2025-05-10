@@ -88,10 +88,15 @@ const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
         </div>
       ) : null}
 
+      {/*
+        <div
+          className={`w-80 h-screen min-h-fit pt-[clamp(245px,35vh,350px)] pb-20 gap-4 mx-auto flex flex-col items-center justify-between text-center relative z-10 opacity-0 transition-opacity duration-1000 ${
+            isInView && "!opacity-100"
+          }`}
+        >
+      */}
       <div
-        className={`w-80 h-screen min-h-fit pt-[clamp(245px,35vh,350px)] pb-20 gap-4 mx-auto flex flex-col items-center justify-between text-center relative z-10 opacity-0 transition-opacity duration-1000 ${
-          isInView && "!opacity-100"
-        }`}
+        className={`w-80 h-screen min-h-fit pt-[clamp(245px,35vh,350px)] pb-20 gap-4 mx-auto flex flex-col items-center justify-between text-center relative z-10`}
       >
         <Title variant="h1">{blok.title}</Title>
 

@@ -5,7 +5,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-07T14:39:26.697Z",
-      "updated_at": "2025-05-08T17:00:17.751Z",
+      "updated_at": "2025-05-10T07:36:37.148Z",
       "id": 7311926,
       "schema": {
         "title": {
@@ -32,6 +32,11 @@
               "_uid": "16e6208a-4b70-4ed6-a214-a1850a77f46c",
               "value": "reserve",
               "name": "reserve"
+            },
+            {
+              "_uid": "175750df-026a-4aca-91d2-35e86fc44873",
+              "value": "event",
+              "name": "event"
             }
           ],
           "id": "T_3JYQx_QkibV3hAQ4rbfA"
@@ -81,6 +86,223 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "button",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
+      "name": "card",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-05-10T12:02:58.379Z",
+      "updated_at": "2025-05-10T12:44:46.488Z",
+      "id": 7324031,
+      "schema": {
+        "variant": {
+          "type": "option",
+          "pos": 1,
+          "use_uuid": true,
+          "options": [
+            {
+              "_uid": "5306d42a-d802-46a1-aff1-7137103f1278",
+              "value": "default",
+              "name": "default"
+            },
+            {
+              "_uid": "28e67193-eab8-47c8-bf04-ca55db5323ac",
+              "name": "event",
+              "value": "event"
+            }
+          ],
+          "id": "bKG1eReZQMKohIn3V1z91w"
+        },
+        "title": {
+          "type": "text",
+          "pos": 2,
+          "id": "P9-oZW4DRCOa-MPgYqqqBA"
+        },
+        "description": {
+          "type": "textarea",
+          "pos": 3,
+          "id": "97GJLF5FSQa5G7MVNchFmw"
+        },
+        "date": {
+          "type": "datetime",
+          "pos": 4,
+          "id": "fmElf7yqT7GV2PHrggzZdg"
+        },
+        "image": {
+          "type": "asset",
+          "pos": 5,
+          "filetypes": [
+            "images"
+          ],
+          "id": "cdjNa4jHRdOgk3296RL7zg",
+          "required": false
+        },
+        "buttons": {
+          "type": "bloks",
+          "pos": 6,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "button"
+          ],
+          "id": "GlsNFp1cSLqpdtQoi6fylw"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "card",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
+      "name": "carousel",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-05-10T08:29:45.928Z",
+      "updated_at": "2025-05-10T14:38:33.736Z",
+      "id": 7323917,
+      "schema": {
+        "count_items": {
+          "type": "number",
+          "pos": 0,
+          "id": "3is1_1l8RSasiaP63tp9jQ"
+        },
+        "count_items_per_view": {
+          "type": "option",
+          "pos": 1,
+          "use_uuid": true,
+          "options": [
+            {
+              "_uid": "452eafca-9a7b-4399-9a44-8d77ba1dcfdc",
+              "name": "3",
+              "value": "3"
+            },
+            {
+              "_uid": "419fcce3-3cae-4579-ad09-c49ae31a521a",
+              "value": "4",
+              "name": "4"
+            }
+          ],
+          "default_value": "3",
+          "id": "JflRJR2aT8C6RXn728LryA"
+        },
+        "type": {
+          "type": "option",
+          "pos": 2,
+          "use_uuid": true,
+          "options": [
+            {
+              "_uid": "afa738fc-c979-4332-b471-8859d4860fb1",
+              "name": "Drinks",
+              "value": "drinks"
+            },
+            {
+              "_uid": "d873000e-d59a-4e94-aaed-f9eca2998d8f",
+              "value": "food",
+              "name": "Food"
+            },
+            {
+              "_uid": "1f823af7-d2ee-4a3d-b490-58cb3f9aaf6e",
+              "value": "games",
+              "name": "Games"
+            },
+            {
+              "_uid": "fc9172cb-3fd7-49d0-abd5-48c85ea5865c",
+              "value": "team",
+              "name": "Team"
+            }
+          ],
+          "id": "Ww0mVB1gSZqb4kcpvvAdPA"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "carousel",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
+      "name": "cta",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-05-10T07:32:11.234Z",
+      "updated_at": "2025-05-10T08:22:56.160Z",
+      "id": 7323902,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "id": "bvbL19iUTGeDcPUrg00yLw"
+        },
+        "description": {
+          "type": "textarea",
+          "pos": 1,
+          "id": "wV-OerT6T9qH1teO03YpYA"
+        },
+        "buttons": {
+          "type": "bloks",
+          "pos": 2,
+          "id": "LGkI6KBxR3-l4fveha0_lA",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "button"
+          ]
+        },
+        "variant": {
+          "type": "option",
+          "pos": 3,
+          "use_uuid": true,
+          "options": [
+            {
+              "_uid": "ce648330-1fe6-4fdd-b422-798873517d04",
+              "name": "bright",
+              "value": "bright"
+            },
+            {
+              "_uid": "e3f25599-4efc-4255-ae39-42d7ba7a944f",
+              "value": "dark",
+              "name": "dark"
+            }
+          ],
+          "id": "KH_mh5GvQzW35LqubNmjBA"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "cta",
       "component_group_uuid": null,
       "color": null,
       "icon": null,
@@ -158,6 +380,44 @@
       "metadata": {}
     },
     {
+      "name": "games",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-05-10T13:30:24.724Z",
+      "updated_at": "2025-05-10T13:30:51.307Z",
+      "id": 7324125,
+      "schema": {
+        "description": {
+          "type": "textarea",
+          "pos": 0,
+          "id": "p4HkbEZMSiK30RQGGYh9nA"
+        },
+        "image": {
+          "type": "asset",
+          "pos": 1,
+          "filetypes": [
+            "images"
+          ],
+          "id": "dEOGokbERy6j4cCNtnjENQ"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "games",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
       "name": "hero",
       "display_name": null,
       "description": "",
@@ -204,6 +464,82 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "hero",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
+      "name": "icon_block",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-05-10T12:52:15.465Z",
+      "updated_at": "2025-05-10T13:10:20.755Z",
+      "id": 7324113,
+      "schema": {
+        "icon": {
+          "type": "text",
+          "pos": 0,
+          "description": "Search here: https://lucide.dev/icons/ and take the name",
+          "id": "AX2bOlINRMm4D4C9PMsuCw"
+        },
+        "title": {
+          "type": "text",
+          "pos": 1,
+          "id": "jt38lr8rSb6oNsH4WRyHUw"
+        },
+        "description": {
+          "type": "textarea",
+          "pos": 2,
+          "id": "jm7FsfmaQR6GAU8jWEBzNA"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "icon_block",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
+      "name": "icon_block_grid",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-05-10T12:52:00.389Z",
+      "updated_at": "2025-05-10T12:53:14.532Z",
+      "id": 7324112,
+      "schema": {
+        "icon_blocks": {
+          "type": "bloks",
+          "pos": 0,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "icon_block"
+          ],
+          "id": "LBM-6XGpQ3GRBTq6RAtgww"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "icon_block_grid",
       "component_group_uuid": null,
       "color": null,
       "icon": null,
@@ -260,11 +596,49 @@
       "metadata": {}
     },
     {
+      "name": "product",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-05-10T08:21:18.954Z",
+      "updated_at": "2025-05-10T08:29:59.592Z",
+      "id": 7323913,
+      "schema": {
+        "description": {
+          "type": "text",
+          "pos": 1,
+          "id": "7hv_eJnlSxC6ujfNdb7c7w"
+        },
+        "image": {
+          "type": "asset",
+          "pos": 2,
+          "filetypes": [
+            "images"
+          ],
+          "id": "BQn0JvaxQmG9cjXTQ161iQ"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "product",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
       "name": "section",
       "display_name": null,
       "description": "",
       "created_at": "2025-05-07T13:14:34.909Z",
-      "updated_at": "2025-05-09T12:56:19.009Z",
+      "updated_at": "2025-05-10T14:20:31.930Z",
       "id": 7311397,
       "schema": {
         "name": {
@@ -283,7 +657,12 @@
           "restrict_type": "",
           "restrict_components": true,
           "component_whitelist": [
-            "event_grid"
+            "event_grid",
+            "cta",
+            "card",
+            "icon_block_grid",
+            "games_carousel",
+            "carousel"
           ],
           "id": "Gux2H8z5RTClGLfZUl5Vmg"
         }
@@ -296,6 +675,49 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "section",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
+      "name": "team",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-05-10T14:17:28.026Z",
+      "updated_at": "2025-05-10T14:27:57.915Z",
+      "id": 7324166,
+      "schema": {
+        "description": {
+          "type": "textarea",
+          "pos": 1,
+          "id": "nM2GlmYTQkuEbJoGmaqFcg"
+        },
+        "image": {
+          "type": "asset",
+          "pos": 1,
+          "filetypes": [
+            "images"
+          ],
+          "id": "eaD3rSSJS8yWERF6lgi6iQ"
+        },
+        "youtube_video_id": {
+          "type": "text",
+          "pos": 2,
+          "id": "euZcJoPCQ4GelY1L5b6X-Q"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "team",
       "component_group_uuid": null,
       "color": null,
       "icon": null,

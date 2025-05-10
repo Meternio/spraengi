@@ -66,7 +66,7 @@ const Section: React.FunctionComponent<SectionStoryblok> = ({ blok }) => {
       ref={sectionRef}
       {...storyblokEditable(blok)}
       id={createSlug(blok.name)}
-      className={`min-h-screen relative p-4 py-16 lg:p-16`}
+      className={`relative flex flex-col gap-6 p-4 py-16 lg:p-16`}
     >
       {blok.show_moving_name && (
         <div
@@ -83,11 +83,9 @@ const Section: React.FunctionComponent<SectionStoryblok> = ({ blok }) => {
             ))}
         </div>
       )}
-      <div className="relative z-10">
-        {blok?.body?.map((nestedBlok: SbBlokData) => (
-          <StoryblokServerComponent blok={nestedBlok} key={nestedBlok._uid} />
-        ))}
-      </div>
+      {blok?.body?.map((nestedBlok: SbBlokData) => (
+        <StoryblokServerComponent blok={nestedBlok} key={nestedBlok._uid} />
+      ))}
       {blok.show_moving_name && (
         <div
           ref={bottomScrollRef}

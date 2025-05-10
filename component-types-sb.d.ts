@@ -3,7 +3,7 @@
 import type { ISbStoryData } from "storyblok";
 export interface ButtonStoryblok {
   title?: string;
-  type?: "" | "link" | "localScroll" | "reserve";
+  type?: "" | "link" | "localScroll" | "reserve" | "event";
   variant?: "" | "primary" | "outline" | "ghost" | "link";
   href?: string;
   component: "button";
@@ -36,6 +36,37 @@ export interface AssetStoryblok {
   [k: string]: any;
 }
 
+export interface CardStoryblok {
+  variant?: "" | "default" | "event";
+  title?: string;
+  description?: string;
+  date?: string;
+  image?: AssetStoryblok;
+  buttons?: ButtonStoryblok[];
+  component: "card";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface CarouselStoryblok {
+  count_items?: string;
+  count_items_per_view?: "" | "3" | "4";
+  type?: "" | "drinks" | "food" | "games" | "team";
+  component: "carousel";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface CtaStoryblok {
+  title?: string;
+  description?: string;
+  buttons?: ButtonStoryblok[];
+  variant?: "" | "bright" | "dark";
+  component: "cta";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface EventStoryblok {
   date?: string;
   image?: AssetStoryblok;
@@ -51,12 +82,36 @@ export interface EventGridStoryblok {
   [k: string]: any;
 }
 
+export interface GamesStoryblok {
+  description?: string;
+  image?: AssetStoryblok;
+  component: "games";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface HeroStoryblok {
   image?: AssetStoryblok;
   youtube_video_id?: string;
   title?: string;
   buttons?: ButtonStoryblok[];
   component: "hero";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface IconBlockStoryblok {
+  icon?: string;
+  title?: string;
+  description?: string;
+  component: "icon_block";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface IconBlockGridStoryblok {
+  icon_blocks?: IconBlockStoryblok[];
+  component: "icon_block_grid";
   _uid: string;
   [k: string]: any;
 }
@@ -70,11 +125,35 @@ export interface PageStoryblok {
   [k: string]: any;
 }
 
+export interface ProductStoryblok {
+  description?: string;
+  image?: AssetStoryblok;
+  component: "product";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface SectionStoryblok {
   name?: string;
   show_moving_name?: boolean;
-  body?: EventGridStoryblok[];
+  body?: (
+    | EventGridStoryblok
+    | CtaStoryblok
+    | CardStoryblok
+    | IconBlockGridStoryblok
+    | GamesCarouselStoryblok
+    | CarouselStoryblok
+  )[];
   component: "section";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface TeamStoryblok {
+  description?: string;
+  image?: AssetStoryblok;
+  youtube_video_id?: string;
+  component: "team";
   _uid: string;
   [k: string]: any;
 }

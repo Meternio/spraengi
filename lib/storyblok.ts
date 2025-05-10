@@ -6,6 +6,11 @@ import Hero from "@/components/Hero";
 import Section from "@/components/Section";
 import Button from "@/components/Button";
 import EventGrid from "@/components/EventGrid";
+import Cta from "@/components/Cta";
+import Carousel from "@/components/Carousel";
+import Card from "@/components/Card";
+import IconBlockGrid from "@/components/IconBlockGrid";
+import IconBlock from "@/components/IconBlock";
 
 export const getStoryblokApi = storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_TOKEN,
@@ -16,6 +21,11 @@ export const getStoryblokApi = storyblokInit({
     section: Section,
     button: Button,
     event_grid: EventGrid,
+    cta: Cta,
+    carousel: Carousel,
+    card: Card,
+    icon_block_grid: IconBlockGrid,
+    icon_block: IconBlock,
   },
 });
 
