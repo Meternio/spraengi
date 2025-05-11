@@ -59,7 +59,7 @@ export const fetchContentType = async (
   url.searchParams.append("starts_with", folder);
   url.searchParams.append(
     "version",
-    process.env.NODE_ENV === "production" ? "published" : "draft"
+    "draft"
   );
   url.searchParams.append(
     "token",
@@ -80,7 +80,7 @@ export const fetchContentType = async (
 
   const response = await fetch(url.toString(), {
     next: { tags: ["cms"] },
-    cache: process.env.NODE_ENV === "production" ? "default" : "no-store",
+    cache: "no-store",
   });
   const data = await response.json();
 
