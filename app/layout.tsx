@@ -23,9 +23,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const datasourceData = await fetchDatasource([
-    "opening-hours",
-    "company-details",
     "theming",
+    "reserve",
+    "event-booking",
   ]);
 
   return (

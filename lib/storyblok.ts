@@ -12,6 +12,7 @@ import Card from "@/components/Card";
 import IconBlockGrid from "@/components/IconBlockGrid";
 import IconBlock from "@/components/IconBlock";
 import ContactGrid from "@/components/ContactGrid";
+import Container from "@/components/Container";
 
 export const getStoryblokApi = storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_TOKEN,
@@ -28,6 +29,7 @@ export const getStoryblokApi = storyblokInit({
     icon_block_grid: IconBlockGrid,
     icon_block: IconBlock,
     contact_grid: ContactGrid,
+    container: Container,
   },
 });
 

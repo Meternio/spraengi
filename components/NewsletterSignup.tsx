@@ -44,39 +44,46 @@ export default function NewsletterSignup() {
 
   return (
     <div className="w-full max-w-md">
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="space-y-2">
-          <label htmlFor="email" className="block text-sm font-medium">
-            E-Mail-Adresse
-          </label>
-          <Input
-            id="email"
-            type="email"
-            placeholder="ihre@email.de"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="bg-white/10 border-primary focus:border-secondary text-white placeholder:text-gray-400"
-            disabled={status === "loading" || status === "success"}
-          />
-        </div>
-
+      <form onSubmit={handleSubmit} className="relative">
+        <Input
+          id="email"
+          type="email"
+          placeholder="E-Mail Adresse eingeben"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full placeholder-gray-400 rounded-full py-6"
+          disabled={status === "loading" || status === "success"}
+        />
         <Button
           type="submit"
-          className="w-full bg-primary hover:bg-secondary text-white"
+          className="absolute right-1.5 top-[5px] rounded-full h-10 w-10"
           disabled={status === "loading" || status === "success"}
+          aria-label="Submit"
         >
-          {status === "loading" ? "Wird gesendet..." : "Benachrichtige mich"}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
         </Button>
 
         {status === "error" && (
-          <div className="flex items-center gap-2 text-red-400 text-sm">
+          <div className="flex items-center gap-2 text-red-400 text-sm mt-2">
             <AlertCircle size={16} />
             <span>{message}</span>
           </div>
         )}
 
         {status === "success" && (
-          <div className="flex items-center gap-2 text-green-400 text-sm">
+          <div className="flex items-center gap-2 text-green-400 text-sm mt-2">
             <CheckCircle2 size={16} />
             <span>{message}</span>
           </div>

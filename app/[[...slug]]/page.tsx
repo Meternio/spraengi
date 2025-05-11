@@ -15,11 +15,9 @@ export default async function Page({ params }: { params: Params }) {
 
   return (
     <>
-      <Header
-        pageData={pageData.story}
-      />
+      <Header pageData={pageData.story} />
       <StoryblokStory story={pageData.story} />
-      <Footer/>
+      <Footer pageData={pageData.story} />
     </>
   );
 }

@@ -5,7 +5,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-07T14:39:26.697Z",
-      "updated_at": "2025-05-10T07:36:37.148Z",
+      "updated_at": "2025-05-11T21:13:07.648Z",
       "id": 7311926,
       "schema": {
         "title": {
@@ -13,9 +13,16 @@
           "pos": 0,
           "id": "rMEl6-7MRKKGxdeQVBrw7A"
         },
+        "icon": {
+          "type": "text",
+          "pos": 1,
+          "id": "LLi3YNQNSiSaauzgCImjnQ",
+          "display_name": "",
+          "description": "Search here: https://lucide.dev/icons/ and take the name"
+        },
         "type": {
           "type": "option",
-          "pos": 1,
+          "pos": 2,
           "use_uuid": true,
           "options": [
             {
@@ -43,7 +50,7 @@
         },
         "variant": {
           "type": "option",
-          "pos": 2,
+          "pos": 3,
           "use_uuid": true,
           "options": [
             {
@@ -71,7 +78,7 @@
         },
         "href": {
           "type": "text",
-          "pos": 3,
+          "pos": 4,
           "show_anchor": true,
           "email_link_type": true,
           "allow_target_blank": true,
@@ -299,11 +306,52 @@
       "metadata": {}
     },
     {
+      "name": "container",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-05-11T14:53:36.549Z",
+      "updated_at": "2025-05-11T14:54:41.075Z",
+      "id": 7325235,
+      "schema": {
+        "body": {
+          "type": "bloks",
+          "pos": 0,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "carousel",
+            "cta",
+            "icon_block_grid",
+            "event_grid",
+            "contact_grid",
+            "card"
+          ],
+          "component_group_whitelist": [],
+          "id": "_tVQQ6uXRJK9qJS5Vs9btg"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "container",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
       "name": "cta",
       "display_name": null,
       "description": "",
       "created_at": "2025-05-10T07:32:11.234Z",
-      "updated_at": "2025-05-10T08:22:56.160Z",
+      "updated_at": "2025-05-11T15:01:43.202Z",
       "id": 7323902,
       "schema": {
         "title": {
@@ -340,6 +388,11 @@
               "_uid": "e3f25599-4efc-4255-ae39-42d7ba7a944f",
               "value": "dark",
               "name": "dark"
+            },
+            {
+              "_uid": "23f07bf2-26ca-49a5-a108-37e9800cbfb9",
+              "value": "transparent",
+              "name": "transparent"
             }
           ],
           "id": "KH_mh5GvQzW35LqubNmjBA"
@@ -391,6 +444,61 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "event",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
+      "name": "event_booking",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-05-11T20:40:34.975Z",
+      "updated_at": "2025-05-11T20:40:56.629Z",
+      "id": 7325632,
+      "schema": {
+        "name": {
+          "type": "text",
+          "pos": 0,
+          "id": "dCYAi7DgT7KUHWQB0B4U_w"
+        },
+        "phone": {
+          "type": "text",
+          "pos": 1,
+          "id": "rZL7QNp4TUGtJnB4y46n_g"
+        },
+        "email": {
+          "type": "text",
+          "pos": 2,
+          "id": "DNbn9NiZSpuZ1TEs-1ZGhw"
+        },
+        "people": {
+          "type": "text",
+          "pos": 3,
+          "id": "-miQ9WwOSZ-1juHTl-YUfw"
+        },
+        "time": {
+          "type": "text",
+          "pos": 4,
+          "id": "nXVX2tTsSDOd1VhsEM1Qlg"
+        },
+        "date": {
+          "type": "text",
+          "pos": 5,
+          "id": "q4cVfv5-R-igm_Wm4Gzg7Q"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "event_booking",
       "component_group_uuid": null,
       "color": null,
       "icon": null,
@@ -599,18 +707,64 @@
       "metadata": {}
     },
     {
+      "name": "opening_hour",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-05-11T20:58:37.202Z",
+      "updated_at": "2025-05-11T20:59:34.938Z",
+      "id": 7325642,
+      "schema": {
+        "day": {
+          "type": "text",
+          "pos": 0,
+          "id": "rlryU95QSO-yB2vV-4_hVA"
+        },
+        "time": {
+          "type": "text",
+          "pos": 1,
+          "id": "lcmbs9w-Q6yLc-fgDWcfBA"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "opening_hour",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
       "name": "page",
       "display_name": null,
       "description": null,
       "created_at": "2025-04-21T07:39:21.194Z",
-      "updated_at": "2025-05-09T12:56:29.214Z",
+      "updated_at": "2025-05-11T21:48:23.900Z",
       "id": 7246911,
       "schema": {
-        "header": {
+        "common": {
           "type": "section",
           "pos": 0,
+          "id": "-TMwUExJQBC0P9n22xV17Q",
+          "keys": [
+            "opening_hours"
+          ]
+        },
+        "header": {
+          "type": "section",
+          "pos": 1,
           "id": "zNRIh_tXReGjizLztycMlQ",
-          "keys": []
+          "keys": [
+            "logo",
+            "buttons"
+          ]
         },
         "body": {
           "type": "bloks",
@@ -626,7 +780,65 @@
         "footer": {
           "type": "section",
           "pos": 3,
-          "id": "iRTgsyEHRlSxaoMgAlCs7g"
+          "id": "iRTgsyEHRlSxaoMgAlCs7g",
+          "keys": [
+            "title",
+            "icon_blocks",
+            "social_buttons"
+          ]
+        },
+        "logo": {
+          "type": "asset",
+          "pos": 4,
+          "filetypes": [
+            "images"
+          ],
+          "id": "MqZP6IS0TX-6bOfetgfJDQ"
+        },
+        "buttons": {
+          "type": "bloks",
+          "pos": 5,
+          "id": "KAAZnwZ7Sx-d_7IOpCk3qw",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "button"
+          ]
+        },
+        "opening_hours": {
+          "type": "bloks",
+          "pos": 6,
+          "id": "6PMYZrKUTkuXDe5KZ-k8Bw",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "opening_hour"
+          ]
+        },
+        "title": {
+          "type": "text",
+          "pos": 7,
+          "id": "IaQvoyOuTwe0QYYXW1hWkA"
+        },
+        "icon_blocks": {
+          "type": "bloks",
+          "pos": 8,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "icon_block"
+          ],
+          "id": "e4AQS58tT_SVnnOQGOLHuw"
+        },
+        "social_buttons": {
+          "type": "bloks",
+          "pos": 9,
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "button"
+          ],
+          "id": "CKC0OtUYSBKjgkiJBcacjQ"
         }
       },
       "image": null,
@@ -717,11 +929,66 @@
       "metadata": {}
     },
     {
+      "name": "reservation",
+      "display_name": null,
+      "description": "",
+      "created_at": "2025-05-11T15:24:53.408Z",
+      "updated_at": "2025-05-11T16:25:20.931Z",
+      "id": 7325270,
+      "schema": {
+        "name": {
+          "type": "text",
+          "pos": 0,
+          "id": "Jf3R4Wk1QDmf2xtgpxEm_Q"
+        },
+        "phone": {
+          "type": "text",
+          "pos": 1,
+          "id": "6UK7SXtvQXygr9RhFlEqPA"
+        },
+        "email": {
+          "type": "text",
+          "pos": 2,
+          "id": "TTRw0CFkQhWFuo_kh92FiA"
+        },
+        "people": {
+          "type": "number",
+          "pos": 3,
+          "id": "IOZM1nElSRSdtUB8L6fJqA"
+        },
+        "time": {
+          "type": "text",
+          "pos": 4,
+          "id": "P2MybWOiSOm84tk_pK38kw"
+        },
+        "date": {
+          "type": "text",
+          "pos": 5,
+          "id": "WwP38gtSSrmGYXunvoUiTw"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "reservation",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null,
+      "internal_tags_list": [],
+      "internal_tag_ids": [],
+      "content_type_asset_preview": null,
+      "metadata": {}
+    },
+    {
       "name": "section",
       "display_name": null,
       "description": "",
       "created_at": "2025-05-07T13:14:34.909Z",
-      "updated_at": "2025-05-10T14:59:14.348Z",
+      "updated_at": "2025-05-11T14:54:51.093Z",
       "id": 7311397,
       "schema": {
         "name": {
@@ -746,7 +1013,8 @@
             "icon_block_grid",
             "games_carousel",
             "carousel",
-            "contact_grid"
+            "contact_grid",
+            "container"
           ],
           "id": "Gux2H8z5RTClGLfZUl5Vmg"
         }

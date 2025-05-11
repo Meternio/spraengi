@@ -3,6 +3,7 @@
 import type { ISbStoryData } from "storyblok";
 export interface ButtonStoryblok {
   title?: string;
+  icon?: string;
   type?: "" | "link" | "localScroll" | "reserve" | "event";
   variant?: "" | "primary" | "outline" | "ghost" | "link";
   href?: string;
@@ -66,11 +67,25 @@ export interface ContactGridStoryblok {
   [k: string]: any;
 }
 
+export interface ContainerStoryblok {
+  body?: (
+    | CarouselStoryblok
+    | CtaStoryblok
+    | IconBlockGridStoryblok
+    | EventGridStoryblok
+    | ContactGridStoryblok
+    | CardStoryblok
+  )[];
+  component: "container";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface CtaStoryblok {
   title?: string;
   description?: string;
   buttons?: ButtonStoryblok[];
-  variant?: "" | "bright" | "dark";
+  variant?: "" | "bright" | "dark" | "transparent";
   component: "cta";
   _uid: string;
   [k: string]: any;
@@ -80,6 +95,18 @@ export interface EventStoryblok {
   date?: string;
   image?: AssetStoryblok;
   component: "event";
+  _uid: string;
+  [k: string]: any;
+}
+
+export interface EventBookingStoryblok {
+  name?: string;
+  phone?: string;
+  email?: string;
+  people?: string;
+  time?: string;
+  date?: string;
+  component: "event_booking";
   _uid: string;
   [k: string]: any;
 }
@@ -125,10 +152,25 @@ export interface IconBlockGridStoryblok {
   [k: string]: any;
 }
 
+export interface OpeningHourStoryblok {
+  day?: string;
+  time?: string;
+  component: "opening_hour";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface PageStoryblok {
+  common?: any;
   header?: any;
   body?: (HeroStoryblok | SectionStoryblok)[];
   footer?: any;
+  logo?: AssetStoryblok;
+  buttons?: ButtonStoryblok[];
+  opening_hours?: OpeningHourStoryblok[];
+  title?: string;
+  icon_blocks?: IconBlockStoryblok[];
+  social_buttons?: ButtonStoryblok[];
   component: "page";
   _uid: string;
   [k: string]: any;
@@ -149,6 +191,18 @@ export interface ProductStoryblok {
   [k: string]: any;
 }
 
+export interface ReservationStoryblok {
+  name?: string;
+  phone?: string;
+  email?: string;
+  people?: string;
+  time?: string;
+  date?: string;
+  component: "reservation";
+  _uid: string;
+  [k: string]: any;
+}
+
 export interface SectionStoryblok {
   name?: string;
   show_moving_name?: boolean;
@@ -160,6 +214,7 @@ export interface SectionStoryblok {
     | GamesCarouselStoryblok
     | CarouselStoryblok
     | ContactGridStoryblok
+    | ContainerStoryblok
   )[];
   component: "section";
   _uid: string;

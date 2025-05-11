@@ -1,82 +1,89 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useRef } from "react"
-import Link from "next/link"
-import Image from "next/image"
-import { Phone, CalendarRange, Mail, Menu } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import ButtonReserve from "@/components/ButtonReserve"
-import Navigation from "@/components/Navigation"
-import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet"
-import { useDatasourcesStore } from "@/components/DatasourcesStoreProvider"
-import type { ISbStoryData } from "@storyblok/react/rsc"
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Menu } from "lucide-react";
+import { Button as ButtonComponent } from "@/components/ui/button";
+import Button from "@/components/Button";
+import Navigation from "@/components/Navigation";
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
+import type { ISbStoryData } from "@storyblok/react/rsc";
+import { PageStoryblok, ButtonStoryblok } from "@/component-types-sb";
 
-export default function Header({
-  pageData,
-}: {
-  pageData: ISbStoryData
-}) {
-  const datasources = useDatasourcesStore((state) => state.datasources)
-  const [lastScrollY, setLastScrollY] = useState(0)
-  const [showCompact, setShowCompact] = useState(false)
-  const compactHeaderRef = useRef<HTMLDivElement>(null)
+export default function Header({ pageData }: { pageData: ISbStoryData }) {
+  const headerData = pageData?.content as PageStoryblok;
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [showCompact, setShowCompact] = useState(false);
+  const compactHeaderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const currentScrollY = window.scrollY
-      const headerHeight = 167
+      const currentScrollY = window.scrollY;
+      const headerHeight = 167;
 
       if (currentScrollY > headerHeight) {
         if (currentScrollY < lastScrollY) {
-          setShowCompact(true)
+          setShowCompact(true);
         } else {
-          setShowCompact(false)
+          setShowCompact(false);
         }
       } else {
-        setShowCompact(false)
+        setShowCompact(false);
       }
 
-      setLastScrollY(currentScrollY)
-    }
+      setLastScrollY(currentScrollY);
+    };
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [lastScrollY])
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   useEffect(() => {
-    if (!compactHeaderRef.current) return
+    if (!compactHeaderRef.current) return;
 
-    const header = compactHeaderRef.current
+    const header = compactHeaderRef.current;
     const focusableElements = header.querySelectorAll(
-      'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])',
-    )
+      'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
 
     if (!showCompact) {
-      header.setAttribute("aria-hidden", "true")
-      header.setAttribute("inert", "")
+      header.setAttribute("aria-hidden", "true");
+      header.setAttribute("inert", "");
       focusableElements.forEach((el) => {
-        el.setAttribute("tabindex", "-1")
-      })
+        el.setAttribute("tabindex", "-1");
+      });
     } else {
-      header.removeAttribute("aria-hidden")
-      header.removeAttribute("inert")
+      header.removeAttribute("aria-hidden");
+      header.removeAttribute("inert");
       focusableElements.forEach((el) => {
-        el.removeAttribute("tabindex")
-      })
+        el.removeAttribute("tabindex");
+      });
     }
-  }, [showCompact])
+  }, [showCompact]);
 
   return (
     <div className="relative">
       {/* Main header */}
       <header className="absolute top-0 left-0 w-full z-40 border-b-1 border-white">
         <div className="py-8 px-4 grid grid-cols-3">
-        <div className="md:hidden flex justify-start items-center">
+          <div className="md:hidden flex justify-start items-center">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant={"ghost"} size={"icon"} aria-label="Öffne Menü" className="cursor-pointer">
+                <ButtonComponent
+                  variant={"ghost"}
+                  size={"icon"}
+                  aria-label="Öffne Menü"
+                  className="cursor-pointer"
+                >
                   <Menu className="w-5 h-5" />
-                </Button>
+                </ButtonComponent>
               </SheetTrigger>
               <SheetContent side="left" className="overflow-y-auto">
                 <SheetHeader className="w-full flex items-center border-b-1 border-white py-8">
@@ -84,7 +91,7 @@ export default function Header({
                     <p className="sr-only">Menü</p>
                     <Link href="/">
                       <Image
-                        src={`${datasources?.theming?.logo}`}
+                        src={`${headerData?.logo?.filename}`}
                         alt="Sprängi Bar & Cafe Logo"
                         className="object-contain"
                         width={212}
@@ -93,12 +100,15 @@ export default function Header({
                     </Link>
                   </SheetTitle>
                 </SheetHeader>
-                <Navigation pageData={pageData} className="flex-grow justify-center"/>
+                <Navigation
+                  pageData={pageData}
+                  className="flex-grow justify-center"
+                />
                 <ul className="flex flex-col items-center gap-2 border-t-1 border-white py-4 mt-4">
-                  {datasources["opening-hours"] &&
-                    Object.entries(datasources["opening-hours"]).map(([day, hours]) => (
-                      <li key={day}>
-                        {day}: {hours}
+                  {headerData?.opening_hours &&
+                    headerData.opening_hours.map((entry) => (
+                      <li key={entry._uid}>
+                        {entry.day}: {entry.time}
                       </li>
                     ))}
                 </ul>
@@ -107,10 +117,10 @@ export default function Header({
           </div>
 
           <ul className="hidden md:flex pl-[0.625rem] flex-col gap-1 justify-center">
-            {datasources["opening-hours"] &&
-              Object.entries(datasources["opening-hours"]).map(([day, hours]) => (
-                <li key={day}>
-                  {day}: {hours}
+            {headerData?.opening_hours &&
+              headerData.opening_hours.map((entry) => (
+                <li key={entry._uid}>
+                  {entry.day}: {entry.time}
                 </li>
               ))}
           </ul>
@@ -118,7 +128,7 @@ export default function Header({
           <div className="flex justify-center items-center">
             <Link href="/">
               <Image
-                src={`${datasources?.theming?.logo}`}
+                src={`${headerData?.logo?.filename}`}
                 alt="Sprängi Bar & Cafe Logo"
                 className="object-contain"
                 width={212}
@@ -128,25 +138,16 @@ export default function Header({
           </div>
 
           <div className="flex justify-end items-center">
-            <Button variant={"ghost"} size={"icon"} aria-label="Rufe uns an" asChild>
-              <Link href={`tel:${datasources["company-details"]?.phone}`}>
-                <Phone className="w-5 h-5" />
-              </Link>
-            </Button>
+            {headerData.buttons?.[0] && (
+              <Button blok={headerData.buttons[0] as ButtonStoryblok} />
+            )}
             <div className="hidden md:flex items-center">
-              <ButtonReserve
-                aria-label="Reserviere bei uns"
-                variant={"ghost"}
-                size={"icon"}
-                className="cursor-pointer"
-              >
-                <CalendarRange className="w-5 h-5" />
-              </ButtonReserve>
-              <Button variant={"ghost"} size={"icon"} aria-label="Schreibe uns eine E-Mail" asChild>
-                <Link href={`mailto:${datasources["company-details"]?.email}`}>
-                  <Mail className="w-5 h-5" />
-                </Link>
-              </Button>
+              {headerData.buttons?.slice(1).map((button, index) => (
+                <Button
+                  key={button._uid || index}
+                  blok={button as ButtonStoryblok}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -166,9 +167,14 @@ export default function Header({
           <div className="md:hidden flex justify-start items-center">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant={"ghost"} size={"icon"} aria-label="Öffne Menü" className="cursor-pointer">
+                <ButtonComponent
+                  variant={"ghost"}
+                  size={"icon"}
+                  aria-label="Öffne Menü"
+                  className="cursor-pointer"
+                >
                   <Menu className="w-5 h-5" />
-                </Button>
+                </ButtonComponent>
               </SheetTrigger>
               <SheetContent side="left" className="overflow-y-auto">
                 <SheetHeader className="w-full flex items-center border-b-1 border-white py-8">
@@ -176,7 +182,7 @@ export default function Header({
                     <p className="sr-only">Menü</p>
                     <Link href="/">
                       <Image
-                        src={`${datasources?.theming?.logo}`}
+                        src={`${headerData?.logo?.filename}`}
                         alt="Sprängi Bar & Cafe Logo"
                         className="object-contain"
                         width={212}
@@ -185,12 +191,15 @@ export default function Header({
                     </Link>
                   </SheetTitle>
                 </SheetHeader>
-                <Navigation pageData={pageData} className="flex-grow justify-center"/>
+                <Navigation
+                  pageData={pageData}
+                  className="flex-grow justify-center"
+                />
                 <ul className="flex flex-col items-center gap-2 border-t-1 border-white py-4 mt-4">
-                  {datasources["opening-hours"] &&
-                    Object.entries(datasources["opening-hours"]).map(([day, hours]) => (
-                      <li key={day}>
-                        {day}: {hours}
+                  {headerData?.opening_hours &&
+                    headerData.opening_hours.map((entry) => (
+                      <li key={entry._uid}>
+                        {entry.day}: {entry.time}
                       </li>
                     ))}
                 </ul>
@@ -201,7 +210,7 @@ export default function Header({
           <div className="flex justify-end items-center col-span-2">
             <Link href="/">
               <Image
-                src={`${datasources?.theming?.logo}`}
+                src={`${headerData?.logo?.filename}`}
                 alt="Sprängi Bar & Cafe Logo"
                 className="object-contain"
                 width={212}
@@ -212,5 +221,5 @@ export default function Header({
         </div>
       </div>
     </div>
-  )
+  );
 }

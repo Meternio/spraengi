@@ -1,6 +1,6 @@
 import Image from "next/image"
 import CountdownTimer from "@/components/countdown-timer"
-import NewsletterSignup from "@/components/newsletter-signup"
+import NewsletterSignup from "@/components/NewsletterSignup"
 import SocialLinks from "@/components/social-links"
 
 export default function Home() {

@@ -21,7 +21,8 @@ export default async function Page({ params }: { params: Params }) {
         pageData={pageData.story}
       />
       <StoryblokStory story={pageData.story} />
-      <Footer/>
+      <Footer 
+        pageData={pageData.story}/>
     </>
   );
 }
