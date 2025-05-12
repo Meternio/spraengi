@@ -4,6 +4,7 @@ import { fetchDatasource } from "@/lib/storyblok_utils";
 import { DatasourcesStoreProvider } from "@/components/DatasourcesStoreProvider";
 import "./globals.css";
 import StoryblokProvider from "@/components/StoryblokProvider";
+import StoryblokClientProvider from "@/components/StoryblokClientProvider";
 import QueryProvider from "@/components/QueryProvider";
 
 const inter = Inter({
@@ -31,16 +32,20 @@ export default async function RootLayout({
   return (
     <html lang="de">
       <body className={`${inter.variable} font-sans dark`}>
-        <QueryProvider>
-          <DatasourcesStoreProvider
-            initialData={{
-              datasources: datasourceData.datasources,
-              isLoading: false,
-            }}
-          >
-            <StoryblokProvider>{children}</StoryblokProvider>
-          </DatasourcesStoreProvider>
-        </QueryProvider>
+        <StoryblokProvider>
+          <StoryblokClientProvider>
+            <QueryProvider>
+              <DatasourcesStoreProvider
+                initialData={{
+                  datasources: datasourceData.datasources,
+                  isLoading: false,
+                }}
+              >
+                {children}
+              </DatasourcesStoreProvider>
+            </QueryProvider>
+          </StoryblokClientProvider>
+        </StoryblokProvider>
       </body>
     </html>
   );
