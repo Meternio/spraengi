@@ -4,7 +4,7 @@ import { storyblokEditable } from "@storyblok/react";
 import { EventGridStoryblok } from "@/component-types-sb";
 import { useQuery } from "@tanstack/react-query";
 import { AlertCircle } from "lucide-react";
-import { fetchContentType } from "@/lib/storyblok";
+import { fetchContentType } from "@/lib/storyblok_utils";
 import Card from "@/components/Card";
 
 const EventGrid: React.FC<{ blok: EventGridStoryblok }> = ({ blok }) => {

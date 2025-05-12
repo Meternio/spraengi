@@ -12,7 +12,7 @@ import type {
 } from "@/component-types-sb";
 import { useQuery } from "@tanstack/react-query";
 import { AlertCircle } from "lucide-react";
-import { fetchContentType } from "@/lib/storyblok";
+import { fetchContentType } from "@/lib/storyblok_utils";
 import {
   Carousel as CarouselComponent,
   CarouselContent,

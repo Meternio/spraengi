@@ -1,5 +1,5 @@
 import { StoryblokStory } from "@storyblok/react/rsc";
-import { fetchStory } from "@/lib/storyblok";
+import { fetchStory } from "@/lib/storyblok_utils";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
