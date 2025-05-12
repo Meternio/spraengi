@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { fetchDatasource } from "@/lib/storyblok";
+import { fetchDatasource } from "@/lib/storyblok_utils";
 import { DatasourcesStoreProvider } from "@/components/DatasourcesStoreProvider";
 import "./globals.css";
 import StoryblokProvider from "@/components/StoryblokProvider";
+import StoryblokClientProvider from "@/components/StoryblokClientProvider";
 import QueryProvider from "@/components/QueryProvider";
 
 const inter = Inter({
@@ -32,14 +33,18 @@ export default async function RootLayout({
     <html lang="de">
       <body className={`${inter.variable} font-sans dark`}>
         <StoryblokProvider>
-          <DatasourcesStoreProvider
-            initialData={{
-              datasources: datasourceData.datasources,
-              isLoading: false,
-            }}
-          >
-            <QueryProvider>{children}</QueryProvider>
-          </DatasourcesStoreProvider>
+          <StoryblokClientProvider>
+            <QueryProvider>
+              <DatasourcesStoreProvider
+                initialData={{
+                  datasources: datasourceData.datasources,
+                  isLoading: false,
+                }}
+              >
+                {children}
+              </DatasourcesStoreProvider>
+            </QueryProvider>
+          </StoryblokClientProvider>
         </StoryblokProvider>
       </body>
     </html>
