@@ -11,6 +11,23 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "X-Frame-Options",
+            value: "ALLOW-FROM https://app.storyblok.com",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: "frame-ancestors 'self' https://app.storyblok.com",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
