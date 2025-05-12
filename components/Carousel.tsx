@@ -24,6 +24,7 @@ import Image from "next/image";
 import Title from "@/components/Title";
 import { cn } from "@/lib/utils";
 import Autoplay from "embla-carousel-autoplay";
+import { useDatasourcesStore } from "@/components/DatasourcesStoreProvider";
 
 const ProductCard = ({ product }: { product: ProductStoryblok }) => {
   return (
@@ -99,9 +100,7 @@ const PartnerCard = ({ partner }: { partner: PartnerStoryblok }) => {
     <div className="relative w-full max-w-[150px] h-[100px] mx-auto">
       {partner.image && (
         <Image
-          src={
-            `${partner.image.filename}/m/150x0/filters:quality(75)`
-          }
+          src={`${partner.image.filename}/m/150x0/filters:quality(75)`}
           alt={partner.image.alt || partner.name || "Partner logo"}
           fill
           className="object-contain"
@@ -113,6 +112,7 @@ const PartnerCard = ({ partner }: { partner: PartnerStoryblok }) => {
 };
 
 const Carousel: React.FC<{ blok: CarouselStoryblok }> = ({ blok }) => {
+  const version = useDatasourcesStore((state) => state.version);
   const countStories = Number(blok.count_items) || 3;
   const itemsPerView = Number(blok.count_items_per_view) || 3;
 
@@ -124,7 +124,7 @@ const Carousel: React.FC<{ blok: CarouselStoryblok }> = ({ blok }) => {
   } = useQuery({
     queryKey: [blok.type],
     queryFn: () =>
-      fetchContentType(`${blok.type}/`, countStories, undefined, undefined),
+      fetchContentType(`${blok.type}/`, version, countStories, undefined, undefined),
     refetchOnWindowFocus: false,
   });
 

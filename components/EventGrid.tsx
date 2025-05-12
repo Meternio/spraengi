@@ -6,8 +6,10 @@ import { useQuery } from "@tanstack/react-query";
 import { AlertCircle } from "lucide-react";
 import { fetchContentType } from "@/lib/storyblok_utils";
 import Card from "@/components/Card";
+import { useDatasourcesStore } from "@/components/DatasourcesStoreProvider";
 
 const EventGrid: React.FC<{ blok: EventGridStoryblok }> = ({ blok }) => {
+  const version = useDatasourcesStore((state) => state.version);
   const countEvents = Number(blok.count_events) || 3;
   const {
     data: events,
@@ -17,7 +19,7 @@ const EventGrid: React.FC<{ blok: EventGridStoryblok }> = ({ blok }) => {
   } = useQuery({
     queryKey: ["events"],
     queryFn: () =>
-      fetchContentType("events/", countEvents, undefined, {
+      fetchContentType("events/", version, countEvents, undefined, {
         field: "content.date",
         order: "asc",
       }),

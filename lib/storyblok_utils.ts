@@ -11,22 +11,21 @@ export const fetchStory = async (
     https://api.storyblok.com/v2/cdn/stories${correctSlug}?version=${version}&token=${process.env.NEXT_PUBLIC_STORYBLOK_TOKEN}`,
     {
       next: { tags: ["cms"] },
+      cache: version === "published" ? "default" : "no-store",
     }
   ).then((res) => res.json()) as Promise<{ story: ISbStoryData }>;
 };
 
 export const fetchContentType = async (
   folder: string,
+  version: "draft" | "published",
   limit?: number,
   dateFilters?: Record<string, string | number>,
   sort?: { field: string; order: "asc" | "desc" }
 ) => {
   const url = new URL("https://api.storyblok.com/v2/cdn/stories");
   url.searchParams.append("starts_with", folder);
-  url.searchParams.append(
-    "version",
-    "draft"
-  );
+  url.searchParams.append("version", version);
   url.searchParams.append(
     "token",
     process.env.NEXT_PUBLIC_STORYBLOK_TOKEN || ""
@@ -36,7 +35,10 @@ export const fetchContentType = async (
   }
   if (dateFilters) {
     Object.entries(dateFilters).forEach(([key, value]) => {
-      url.searchParams.append(`filter_query[${key}][gt_date]`, value.toString());
+      url.searchParams.append(
+        `filter_query[${key}][gt_date]`,
+        value.toString()
+      );
     });
   }
 
@@ -46,13 +48,17 @@ export const fetchContentType = async (
 
   const response = await fetch(url.toString(), {
     next: { tags: ["cms"] },
+    cache: version === "published" ? "default" : "no-store",
   });
   const data = await response.json();
 
   return data.stories as ISbStoryData[];
 };
 
-export const fetchDatasource = async (slug: string | string[]) => {
+export const fetchDatasource = async (
+  slug: string | string[],
+  version: "draft" | "published"
+) => {
   // Helper function to normalize entries
   const normalizeEntries = (entries: [{ name: string; value: string }]) => {
     const normalized: Record<string, string> = {};
@@ -74,6 +80,7 @@ export const fetchDatasource = async (slug: string | string[]) => {
 
     const response = await fetch(url.toString(), {
       next: { tags: ["cms"] },
+      cache: version === "published" ? "default" : "no-store",
     });
     const data = await response.json();
     const entries = data.datasource_entries || [];
@@ -103,6 +110,7 @@ export const fetchDatasource = async (slug: string | string[]) => {
 
       const response = await fetch(url.toString(), {
         next: { tags: ["cms"] },
+        cache: "default",
       });
       const data = await response.json();
       const entries = data.datasource_entries || [];

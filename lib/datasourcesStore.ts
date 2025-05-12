@@ -4,6 +4,7 @@ import { createStore } from "zustand/vanilla";
 export interface DatasourcesState {
   datasources: Record<string, Record<string, string>>;
   isLoading: boolean;
+  version: 'draft' | 'published';
 }
 
 export interface DatasourcesActions {
@@ -17,6 +18,7 @@ export type DatasourcesStore = DatasourcesState & DatasourcesActions;
 export const initDatasourcesStore = (): DatasourcesState => ({
   datasources: {},
   isLoading: true,
+  version: "draft",
 });
 
 export const defaultInitState: DatasourcesState = initDatasourcesStore();
