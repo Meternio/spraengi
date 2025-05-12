@@ -264,7 +264,7 @@ const Button: React.FC<{ blok: ButtonStoryblok; className?: string }> = ({
           className={sharedClassNames}
           aria-label={Icon ? blok.title : undefined}
         >
-          <Link href={blok.url || "#"} passHref>
+          <Link href={blok.href || "#"} passHref>
             {!Icon && blok.title}
             {Icon && <Icon className="h-6 w-6" />}
           </Link>
