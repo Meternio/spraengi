@@ -16,7 +16,6 @@ import Container from "@/components/Container";
 export const getStoryblokApi = storyblokInit({
   accessToken: process.env.NEXT_PUBLIC_STORYBLOK_TOKEN,
   use: [apiPlugin],
-  bridge: true,
   components: {
     page: Page,
     hero: Hero,
