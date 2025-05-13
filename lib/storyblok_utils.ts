@@ -1,7 +1,6 @@
 import type { ISbStoryData } from "@storyblok/react/rsc";
-import { getStory } from "@/app/actions";
 
-/*export const fetchStory = async (
+export const fetchStory = async (
   version: "draft" | "published",
   slug?: string[]
 ) => {
@@ -15,14 +14,6 @@ import { getStory } from "@/app/actions";
       cache: version === "published" ? "default" : "no-store",
     }
   ).then((res) => res.json()) as Promise<{ story: ISbStoryData }>;
-};*/
-
-export const fetchStory = async (
-  version: "draft" | "published",
-  slug?: string[]
-): Promise<{ story: ISbStoryData }> => {
-  // Use the cached version if available
-  return getStory(slug, version);
 };
 
 export const fetchContentType = async (
