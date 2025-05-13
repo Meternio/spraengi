@@ -11,7 +11,7 @@ export const fetchStory = async (
     https://api.storyblok.com/v2/cdn/stories${correctSlug}?version=${version}&token=${process.env.NEXT_PUBLIC_STORYBLOK_TOKEN}`,
     {
       next: { tags: ["cms"] },
-      cache: version === "published" ? "default" : "no-store",
+      cache: version === "published" ? "force-cache" : "no-store",
     }
   ).then((res) => res.json()) as Promise<{ story: ISbStoryData }>;
 };
@@ -48,7 +48,7 @@ export const fetchContentType = async (
 
   const response = await fetch(url.toString(), {
     next: { tags: ["cms"] },
-    cache: version === "published" ? "default" : "no-store",
+    cache: version === "published" ? "force-cache" : "no-store",
   });
   const data = await response.json();
 
@@ -80,7 +80,7 @@ export const fetchDatasource = async (
 
     const response = await fetch(url.toString(), {
       next: { tags: ["cms"] },
-      cache: version === "published" ? "default" : "no-store",
+      cache: version === "published" ? "force-cache" : "no-store",
     });
     const data = await response.json();
     const entries = data.datasource_entries || [];
