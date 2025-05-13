@@ -22,14 +22,14 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
-      <body className={`${inter.variable} font-sans dark`}>
-        <StoryblokProvider>
-          <StoryblokClientProvider>
+    <StoryblokProvider>
+      <StoryblokClientProvider>
+        <html lang="de">
+          <body className={`${inter.variable} font-sans dark`}>
             <QueryProvider>{children}</QueryProvider>
-          </StoryblokClientProvider>
-        </StoryblokProvider>
-      </body>
-    </html>
+          </body>
+        </html>
+      </StoryblokClientProvider>
+    </StoryblokProvider>
   );
 }
