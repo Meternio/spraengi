@@ -32,7 +32,7 @@ const ProductCard = ({ product }: { product: ProductStoryblok }) => {
       {product.image && (
         <Image
           src={
-            `${product.image.filename}/m/550x0/filters:quality(75)` ||
+            `${product.image.filename}/m/0x630/filters:quality(75)` ||
             "/placeholder.svg"
           }
           alt={product.image.alt || product.name || "Product image"}
@@ -55,7 +55,7 @@ const GameCard = ({ game }: { game: GamesStoryblok }) => {
       {game.image && (
         <Image
           src={
-            `${game.image.filename}/m/550x0/filters:quality(75)` ||
+            `${game.image.filename}/m/0x630/filters:quality(75)` ||
             "/placeholder.svg"
           }
           alt={game.image.alt || game.name || "Product image"}
@@ -78,7 +78,7 @@ const TeamCard = ({ team }: { team: TeamStoryblok }) => {
       {team.image && (
         <Image
           src={
-            `${team.image.filename}/m/550x0/filters:quality(75)` ||
+            `${team.image.filename}/m/0x630/filters:quality(75)` ||
             "/placeholder.svg"
           }
           alt={team.image.alt || team.name || "Product image"}
