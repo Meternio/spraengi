@@ -25,6 +25,7 @@ import Title from "@/components/Title";
 import { cn } from "@/lib/utils";
 import Autoplay from "embla-carousel-autoplay";
 import { useDatasourcesStore } from "@/components/DatasourcesStoreProvider";
+import Link from "next/link";
 
 const ProductCard = ({ product }: { product: ProductStoryblok }) => {
   return (
@@ -115,9 +116,19 @@ const TeamCard = ({ team }: { team: TeamStoryblok }) => {
   );
 };
 
-const PartnerCard = ({ partner }: { partner: PartnerStoryblok }) => {
+const PartnerCard = ({ partner, duplicate }: { partner: PartnerStoryblok; duplicate: boolean }) => {
   return (
     <div className="relative w-full max-w-[150px] h-[100px] mx-auto">
+      {partner.link?.url && (
+        <Link
+          href={partner.link?.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Besuche die ${partner.name || 'partner'} Webseite`}
+          className="absolute inset-0 flex z-10"
+          tabIndex={duplicate ? -1 : undefined}
+        />
+      )}
       {partner.image && (
         <Image
           src={`${partner.image.filename}/m/150x0/filters:quality(75)`}
@@ -125,6 +136,7 @@ const PartnerCard = ({ partner }: { partner: PartnerStoryblok }) => {
           fill
           className="object-contain"
           loading="lazy"
+          aria-hidden={duplicate ? true : undefined}
         />
       )}
     </div>
@@ -275,6 +287,7 @@ const Carousel: React.FC<{ blok: CarouselStoryblok }> = ({ blok }) => {
                       ...(story.content as PartnerStoryblok),
                       name: story.name,
                     }}
+                    duplicate={outerIndex > 0}
                   />
                 </CarouselItem>
               ))
