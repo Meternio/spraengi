@@ -1,6 +1,6 @@
 "use client";
 
-import type React from "react";
+import React, { useState } from "react";
 
 import { storyblokEditable } from "@storyblok/react/rsc";
 import type {
@@ -73,8 +73,17 @@ const GameCard = ({ game }: { game: GamesStoryblok }) => {
 };
 
 const TeamCard = ({ team }: { team: TeamStoryblok }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const youtubeEmbedUrl = team.youtube_video_id
+    ? `https://www.youtube.com/embed/${team.youtube_video_id}?autoplay=1&mute=1&loop=1&controls=0&playlist=${team.youtube_video_id}&enablejsapi=1`
+    : "";
+
   return (
-    <div className="relative w-full h-[400px] md:h-[500px] lg:h-[630px] rounded-lg overflow-hidden group">
+    <div
+      className="relative w-full h-[400px] md:h-[500px] lg:h-[630px] rounded-lg overflow-hidden group"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {team.image && (
         <Image
           src={
@@ -86,6 +95,17 @@ const TeamCard = ({ team }: { team: TeamStoryblok }) => {
           className="object-cover"
           loading="lazy"
         />
+      )}
+      {isHovered && youtubeEmbedUrl && (
+        <iframe
+          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto aspect-[16/9] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+          src={`${youtubeEmbedUrl}`}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
       )}
       <div className="relative z-20 h-full inset-0 flex flex-col justify-end items-center text-center p-6 bg-gradient-to-t from-primary/80 via-primary/20 md:from-primary/80 md:via-primary/5 to-transparent">
         <Title variant="h3">{team.name || "Product"}</Title>
@@ -124,7 +144,13 @@ const Carousel: React.FC<{ blok: CarouselStoryblok }> = ({ blok }) => {
   } = useQuery({
     queryKey: [blok.type],
     queryFn: () =>
-      fetchContentType(`${blok.type}/`, version, countStories, undefined, undefined),
+      fetchContentType(
+        `${blok.type}/`,
+        version,
+        countStories,
+        undefined,
+        undefined
+      ),
     refetchOnWindowFocus: false,
   });
 
@@ -231,7 +257,7 @@ const Carousel: React.FC<{ blok: CarouselStoryblok }> = ({ blok }) => {
           ]}
         >
           <CarouselContent className="flex">
-            {[...Array(2)].flatMap((_, outerIndex) =>
+            {[...Array(5)].flatMap((_, outerIndex) =>
               stories.map((story, index: number) => (
                 <CarouselItem
                   key={`${index} - ${outerIndex}`}
