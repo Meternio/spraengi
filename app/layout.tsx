@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fira_Sans, Montserrat } from "next/font/google";
 import "./globals.css";
 import StoryblokProvider from "@/components/StoryblokProvider";
 import StoryblokClientProvider from "@/components/StoryblokClientProvider";
 import QueryProvider from "@/components/QueryProvider";
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: "600",
+  variable: "--font-montserrat",
+});
+
+const fira_sans = Fira_Sans({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-fira-sans",
 });
 
 export const metadata: Metadata = {
@@ -23,7 +30,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body className={`${inter.variable} font-sans dark`}>
+      <body className={`${fira_sans.variable} ${montserrat.variable} font-sans dark max-w-[2000px] mx-auto`}>
         <StoryblokProvider>
           <StoryblokClientProvider>
             <QueryProvider>{children}</QueryProvider>

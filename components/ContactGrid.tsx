@@ -12,7 +12,7 @@ const ContactGrid: React.FC<{ blok: ContactGridStoryblok }> = ({ blok }) => {
       {...storyblokEditable(blok)}
       className="flex flex-row flex-wrap lg:flex-nowrap items-center justify-center w-full gap-6"
     >
-      <div className="relative w-full h-96">
+      <div className="relative w-full h-108">
         <iframe
           className="absolute top-0 left-0 w-full h-full"
           src={blok.google_maps_link}
@@ -28,9 +28,9 @@ const ContactGrid: React.FC<{ blok: ContactGridStoryblok }> = ({ blok }) => {
           aria-hidden="true"
         ></div>
       </div>
-      <div className="flex flex-col w-full">
+      <div className="flex flex-col w-full gap-6">
         <Title variant="h2">{blok.title}</Title>
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-4">
           {blok?.icon_blocks?.map((nestedBlok: SbBlokData) => (
             <StoryblokServerComponent blok={nestedBlok} key={nestedBlok._uid} />
           ))}

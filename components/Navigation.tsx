@@ -16,7 +16,7 @@ export default function Navigation({ pageData, className }: { pageData: ISbStory
   return (
     <nav
       className={cn(
-        `flex flex-col items-center gap-2 mt-4 font-bold`,
+        `flex flex-col items-center gap-2 font-bold`,
         className
       )}
     >

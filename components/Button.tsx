@@ -144,7 +144,7 @@ const Button: React.FC<{ blok: ButtonStoryblok; className?: string }> = ({
     const element = document.getElementById(slug);
 
     if (element) {
-      const compactHeaderHeight = 167;
+      const compactHeaderHeight = 153;
       const elementPosition =
         element.getBoundingClientRect().top + window.scrollY;
       const offsetPosition = elementPosition - compactHeaderHeight;

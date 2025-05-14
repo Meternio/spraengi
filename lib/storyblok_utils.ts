@@ -76,7 +76,9 @@ export const fetchDatasource = async (
       "token",
       process.env.NEXT_PUBLIC_STORYBLOK_TOKEN || ""
     );
-    url.searchParams.append("_", Date.now().toString());
+    if (version === "draft") {
+      url.searchParams.append("_", Date.now().toString());
+    }
 
     const response = await fetch(url.toString(), {
       next: { tags: ["cms"] },
@@ -106,11 +108,13 @@ export const fetchDatasource = async (
         "token",
         process.env.NEXT_PUBLIC_STORYBLOK_TOKEN || ""
       );
-      url.searchParams.append("_", Date.now().toString());
+      if (version === "draft") {
+        url.searchParams.append("_", Date.now().toString());
+      }
 
       const response = await fetch(url.toString(), {
         next: { tags: ["cms"] },
-        cache: "default",
+        cache: version === "published" ? "force-cache" : "no-store",
       });
       const data = await response.json();
       const entries = data.datasource_entries || [];

@@ -26,7 +26,7 @@ export default function Header({ pageData }: { pageData: ISbStoryData }) {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      const headerHeight = 167;
+      const headerHeight = 153;
 
       if (currentScrollY > headerHeight) {
         if (currentScrollY < lastScrollY) {
@@ -72,7 +72,7 @@ export default function Header({ pageData }: { pageData: ISbStoryData }) {
     <div className="relative">
       {/* Main header */}
       <header className="absolute top-0 left-0 w-full z-40 border-b-1 border-white">
-        <div className="py-8 px-4 grid grid-cols-3">
+        <div className="py-4 px-4 lg:px-14 grid grid-cols-3">
           <div className="md:hidden flex justify-start items-center">
             <Sheet>
               <SheetTrigger asChild>
@@ -94,8 +94,8 @@ export default function Header({ pageData }: { pageData: ISbStoryData }) {
                         src={`${headerData?.logo?.filename}`}
                         alt="Sprängi Bar & Cafe Logo"
                         className="object-contain"
-                        width={212}
-                        height={103}
+                        width={250}
+                        height={120}
                       />
                     </Link>
                   </SheetTitle>
@@ -104,7 +104,7 @@ export default function Header({ pageData }: { pageData: ISbStoryData }) {
                   pageData={pageData}
                   className="flex-grow justify-center"
                 />
-                <ul className="flex flex-col items-center gap-2 border-t-1 border-white py-4 mt-4">
+                <ul className="flex flex-col items-center gap-2 border-t-1 border-white py-4">
                   {headerData?.opening_hours &&
                     headerData.opening_hours.map((entry) => (
                       <li key={entry._uid}>
@@ -131,8 +131,8 @@ export default function Header({ pageData }: { pageData: ISbStoryData }) {
                 src={`${headerData?.logo?.filename}`}
                 alt="Sprängi Bar & Cafe Logo"
                 className="object-contain"
-                width={212}
-                height={103}
+                width={250}
+                height={120}
               />
             </Link>
           </div>
@@ -157,11 +157,11 @@ export default function Header({ pageData }: { pageData: ISbStoryData }) {
       <div
         ref={compactHeaderRef}
         role="banner"
-        className={`fixed top-0 left-0 w-full z-50 shadow-md bg-background transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 left-1/2 -translate-x-1/2 w-full z-50 shadow-md bg-background transition-transform duration-300 ease-in-out max-w-[2000px] ${
           showCompact ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="py-8 px-4 grid grid-cols-3">
+        <div className="py-4 px-4 lg:px-12 flex items-center justify-between">
           <Navigation pageData={pageData} className="hidden md:flex flex-row" />
 
           <div className="md:hidden flex justify-start items-center">
@@ -185,8 +185,8 @@ export default function Header({ pageData }: { pageData: ISbStoryData }) {
                         src={`${headerData?.logo?.filename}`}
                         alt="Sprängi Bar & Cafe Logo"
                         className="object-contain"
-                        width={212}
-                        height={103}
+                        width={250}
+                        height={120}
                       />
                     </Link>
                   </SheetTitle>
@@ -195,7 +195,7 @@ export default function Header({ pageData }: { pageData: ISbStoryData }) {
                   pageData={pageData}
                   className="flex-grow justify-center"
                 />
-                <ul className="flex flex-col items-center gap-2 border-t-1 border-white py-4 mt-4">
+                <ul className="flex flex-col items-center gap-2 border-t-1 border-white py-4">
                   {headerData?.opening_hours &&
                     headerData.opening_hours.map((entry) => (
                       <li key={entry._uid}>
@@ -207,14 +207,14 @@ export default function Header({ pageData }: { pageData: ISbStoryData }) {
             </Sheet>
           </div>
 
-          <div className="flex justify-end items-center col-span-2">
+          <div className="flex justify-end items-center pr-4">
             <Link href="/">
               <Image
                 src={`${headerData?.logo?.filename}`}
                 alt="Sprängi Bar & Cafe Logo"
                 className="object-contain"
-                width={212}
-                height={103}
+                width={250}
+                height={120}
               />
             </Link>
           </div>

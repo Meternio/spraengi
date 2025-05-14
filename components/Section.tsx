@@ -66,12 +66,13 @@ const Section: React.FunctionComponent<SectionStoryblok> = ({ blok }) => {
       ref={sectionRef}
       {...storyblokEditable(blok)}
       id={createSlug(blok.name)}
-      className={`relative flex flex-col gap-6 p-4 py-16 lg:p-16`}
+      data-has-moving-name={blok.show_moving_name ? "true" : "false"}
+      className={`relative flex flex-col gap-6 p-6 py-16 lg:p-16 ${blok.show_moving_name ? "my-16" : ""}`}
     >
       {blok.show_moving_name && (
         <div
           ref={topScrollRef}
-          className="absolute top-5 left-0 w-full whitespace-nowrap overflow-hidden flex items-center justify-center gap-4"
+          className="font-mono absolute top-0 -translate-y-1/2 left-0 w-full whitespace-nowrap overflow-hidden flex items-center justify-center gap-4"
         >
           {Array(30)
             .fill(null)
@@ -89,7 +90,7 @@ const Section: React.FunctionComponent<SectionStoryblok> = ({ blok }) => {
       {blok.show_moving_name && (
         <div
           ref={bottomScrollRef}
-          className="absolute bottom-5 left-0 w-full whitespace-nowrap overflow-hidden flex items-center justify-center gap-4"
+          className="font-mono absolute bottom-0 translate-y-1/2 left-0 w-full whitespace-nowrap overflow-hidden flex items-center justify-center gap-4"
         >
           {Array(30)
             .fill(null)

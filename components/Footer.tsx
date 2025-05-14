@@ -11,7 +11,7 @@ export default function Footer({ pageData }: { pageData: ISbStoryData }) {
   const footerData = pageData?.content as PageStoryblok;
   
   return (
-    <footer className="bg-[#171717] text-white m-4 lg:mx-16 -mt-8 p-4 lg:p-16 rounded-lg">
+    <footer className="bg-card-muted text-white m-6 lg:mx-16 -mt-10 p-6 lg:p-16 rounded-lg">
       <div className="container mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="space-y-8">
@@ -38,7 +38,7 @@ export default function Footer({ pageData }: { pageData: ISbStoryData }) {
           </div>
 
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold uppercase">Öffnungszeiten</h3>
+            <Title variant="h3">Öffnungszeiten</Title>
 
             <ul className="flex flex-col gap-2">
               {footerData?.opening_hours &&
@@ -51,7 +51,7 @@ export default function Footer({ pageData }: { pageData: ISbStoryData }) {
           </div>
 
           <div className="space-y-8">
-            <h3 className="text-2xl font-bold uppercase">Kontakt</h3>
+            <Title variant="h3">Kontakt</Title>
 
             {footerData?.icon_blocks &&
               footerData.icon_blocks.map((entry) => (
@@ -65,9 +65,7 @@ export default function Footer({ pageData }: { pageData: ISbStoryData }) {
           </div>
 
           <div className="md:col-span-2 md:col-start-2 border-t-1 border-white pt-8">
-            <h3 className="text-2xl font-bold uppercase mb-6">
-              Nichts verpassen
-            </h3>
+            <Title variant="h3" className="mb-6">Nichts verpassen</Title>
             <p className="mb-4">Melde dich für unseren Newsletter an.</p>
 
             <div className="flex max-w-md">

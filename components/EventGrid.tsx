@@ -28,20 +28,21 @@ const EventGrid: React.FC<{ blok: EventGridStoryblok }> = ({ blok }) => {
 
   if (isLoading) {
     return (
-      <div {...storyblokEditable(blok)} className="grid grid-cols-1 gap-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-          {[...Array(countEvents)].map((_, index) => (
-            <Card
-              key={index}
-              isLoading={true}
-              fullWidth={index === 0}
-              blok={{
-                component: "card",
-                _uid: `loading-card-${index}`,
-              }}
-            />
-          ))}
-        </div>
+      <div
+        {...storyblokEditable(blok)}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4"
+      >
+        {[...Array(countEvents)].map((_, index) => (
+          <Card
+            key={index}
+            isLoading={true}
+            fullWidth={index === 0}
+            blok={{
+              component: "card",
+              _uid: `loading-card-${index}`,
+            }}
+          />
+        ))}
       </div>
     );
   }
@@ -77,32 +78,33 @@ const EventGrid: React.FC<{ blok: EventGridStoryblok }> = ({ blok }) => {
   }
 
   return (
-    <div {...storyblokEditable(blok)} className="grid grid-cols-1 gap-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-        {events.map((event, index) => (
-          <Card
-            key={event.uuid}
-            fullWidth={index === 0}
-            blok={{
-              component: "card",
-              _uid: event.uuid,
-              variant: "event",
-              title: event.name,
-              date: event.content.date,
-              image: event.content.image,
-              buttons: [
-                {
-                  _uid: "button_" + event.uuid,
-                  component: "button",
-                  title: "zum Event",
-                  variant: "primary",
-                  type: "link",
-                },
-              ],
-            }}
-          />
-        ))}
-      </div>
+    <div
+      {...storyblokEditable(blok)}
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4"
+    >
+      {events.map((event, index) => (
+        <Card
+          key={event.uuid}
+          fullWidth={index === 0}
+          blok={{
+            component: "card",
+            _uid: event.uuid,
+            variant: "event",
+            title: event.name,
+            date: event.content.date,
+            image: event.content.image,
+            buttons: [
+              {
+                _uid: "button_" + event.uuid,
+                component: "button",
+                title: "zum Event",
+                variant: "primary",
+                type: "link",
+              },
+            ],
+          }}
+        />
+      ))}
     </div>
   );
 };

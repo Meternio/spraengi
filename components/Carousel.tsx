@@ -177,17 +177,20 @@ const Carousel: React.FC<{ blok: CarouselStoryblok }> = ({ blok }) => {
         ) : (
           <CarouselComponent
             {...storyblokEditable(blok)}
-            className="w-[calc(100%+2rem)] lg:w-full relative -ml-4 lg:-ml-0"
+            className="w-[calc(100%+3rem)] lg:w-full relative -ml-6 lg:-ml-0"
           >
-            <CarouselContent className="-ml-4">
-              {[...Array(countStories)].map((_, index) => (
+            <CarouselContent>
+              {[...Array(4)].map((_, index) => (
                 <CarouselItem
                   key={index}
-                  className={`pl-4 ${
+                  className={cn(
                     itemsPerView === 4
-                      ? "md:basis-1/4"
-                      : "md:basis-1/2 lg:basis-1/3"
-                  }`}
+                      ? "basis-3/4 md:basis-1/4"
+                      : "basis-4/5 md:basis-2/5 lg:basis-1/3",
+                    "transition-opacity duration-300",
+                    index === 0 ? "ml-6 lg:ml-0" : "",
+                    index === countStories - 1 ? "pr-6 lg:pr-0" : ""
+                  )}
                 >
                   <div className="relative w-full h-[400px] md:h-[500px] lg:h-[630px] rounded-lg overflow-hidden">
                     {/* Skeleton loader */}
@@ -249,7 +252,7 @@ const Carousel: React.FC<{ blok: CarouselStoryblok }> = ({ blok }) => {
             align: "start",
             loop: true,
           }}
-          className="w-[calc(100%+2rem)] lg:w-[calc(100%+8rem)] relative -ml-4 lg:-ml-16"
+          className="w-[calc(100%+3rem)] lg:w-[calc(100%+8rem)] relative -ml-6 lg:-ml-16"
           plugins={[
             Autoplay({
               delay: 2000,
@@ -284,7 +287,7 @@ const Carousel: React.FC<{ blok: CarouselStoryblok }> = ({ blok }) => {
                 ? viewSize - snapSize
                 : (viewSize - snapSize) / 2,
           }}
-          className="w-[calc(100%+2rem)] lg:w-full relative -ml-4 lg:-ml-0"
+          className="w-[calc(100%+3rem)] lg:w-full relative -ml-6 lg:-ml-0"
         >
           <CarouselContent>
             {stories.map((story, index: number) => (
@@ -295,8 +298,8 @@ const Carousel: React.FC<{ blok: CarouselStoryblok }> = ({ blok }) => {
                     ? "basis-3/4 md:basis-1/4"
                     : "basis-4/5 md:basis-2/5 lg:basis-1/3",
                   "transition-opacity duration-300",
-                  index === 0 ? "ml-4 lg:ml-0" : "",
-                  index === stories.length - 1 ? "pr-4 lg:pr-0" : ""
+                  index === 0 ? "ml-6 lg:ml-0" : "",
+                  index === stories.length - 1 ? "pr-6 lg:pr-0" : ""
                 )}
               >
                 {blok.type === "games" && (

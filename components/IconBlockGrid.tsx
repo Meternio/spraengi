@@ -11,7 +11,7 @@ const IconBlockGrid: React.FunctionComponent<IconBlockGridStoryblok> = ({
   return (
     <div
       {...storyblokEditable(blok)}
-      className="grid grid-cols-1 lg:grid-cols-3 gap-6"
+      className="grid grid-cols-1 lg:grid-cols-3 gap-4"
     >
       {blok?.icon_blocks?.map((nestedBlok: SbBlokData) => (
         <StoryblokServerComponent blok={nestedBlok} key={nestedBlok._uid} />
