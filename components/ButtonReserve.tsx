@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useDatasourcesStore } from "@/components/DatasourcesStoreProvider";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import React from "react";
 import { ReservationStoryblok } from "@/component-types-sb";
@@ -82,9 +83,9 @@ const ButtonReserve = ({ children, variant, ...props }: ButtonProps) => {
           } am ${date?.toLocaleDateString("de-DE")} um ${reservationData.time}`,
           content: `Name: ${reservationData.name}<br>Telefon: ${
             reservationData.phone
-          }<br>Email: ${reservationData.email}<br>Anzahl Personen: ${
-            reservationData.people
-          }<br>Uhrzeit: ${
+          }<br>Email: ${reservationData.email}<br>Nachricht: ${
+            reservationData.message
+          }<br>Anzahl Personen: ${reservationData.people}<br>Uhrzeit: ${
             reservationData.time
           }<br>Datum: ${date?.toLocaleDateString("de-DE")}`,
         }),
@@ -137,6 +138,12 @@ const ButtonReserve = ({ children, variant, ...props }: ButtonProps) => {
             <Input name="name" type="text" placeholder="Name *" required />
             <Input name="phone" type="tel" placeholder="Telefon *" required />
             <Input name="email" type="email" placeholder="Email" />
+            <Textarea
+              name="message"
+              placeholder="Nachricht"
+              rows={3}
+              className="resize-none"
+            />
             <Input
               name="people"
               type="number"

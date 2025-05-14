@@ -183,7 +183,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-10T08:29:45.928Z",
-      "updated_at": "2025-05-10T15:24:34.412Z",
+      "updated_at": "2025-05-14T12:42:17.901Z",
       "id": 7323917,
       "schema": {
         "count_items": {
@@ -196,6 +196,11 @@
           "pos": 1,
           "use_uuid": true,
           "options": [
+            {
+              "_uid": "0934ce3a-dd30-4030-a672-91294266e3af",
+              "value": "2",
+              "name": "2"
+            },
             {
               "_uid": "452eafca-9a7b-4399-9a44-8d77ba1dcfdc",
               "name": "3",
@@ -457,7 +462,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-11T20:40:34.975Z",
-      "updated_at": "2025-05-11T20:40:56.629Z",
+      "updated_at": "2025-05-14T12:50:11.524Z",
       "id": 7325632,
       "schema": {
         "name": {
@@ -475,19 +480,24 @@
           "pos": 2,
           "id": "DNbn9NiZSpuZ1TEs-1ZGhw"
         },
+        "message": {
+          "type": "textarea",
+          "pos": 3,
+          "id": "RXgGPm0CSuC6oJvi-kWYCg"
+        },
         "people": {
           "type": "text",
-          "pos": 3,
+          "pos": 4,
           "id": "-miQ9WwOSZ-1juHTl-YUfw"
         },
         "time": {
           "type": "text",
-          "pos": 4,
+          "pos": 5,
           "id": "nXVX2tTsSDOd1VhsEM1Qlg"
         },
         "date": {
           "type": "text",
-          "pos": 5,
+          "pos": 6,
           "id": "q4cVfv5-R-igm_Wm4Gzg7Q"
         }
       },
@@ -933,7 +943,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-11T15:24:53.408Z",
-      "updated_at": "2025-05-11T16:25:20.931Z",
+      "updated_at": "2025-05-14T12:50:28.700Z",
       "id": 7325270,
       "schema": {
         "name": {
@@ -951,19 +961,24 @@
           "pos": 2,
           "id": "TTRw0CFkQhWFuo_kh92FiA"
         },
-        "people": {
-          "type": "number",
+        "message": {
+          "type": "textarea",
           "pos": 3,
+          "id": "haKqByhcSti0XOGalDGDIg"
+        },
+        "people": {
+          "type": "text",
+          "pos": 4,
           "id": "IOZM1nElSRSdtUB8L6fJqA"
         },
         "time": {
           "type": "text",
-          "pos": 4,
+          "pos": 5,
           "id": "P2MybWOiSOm84tk_pK38kw"
         },
         "date": {
           "type": "text",
-          "pos": 5,
+          "pos": 6,
           "id": "WwP38gtSSrmGYXunvoUiTw"
         }
       },

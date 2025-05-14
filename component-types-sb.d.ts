@@ -51,7 +51,7 @@ export interface CardStoryblok {
 
 export interface CarouselStoryblok {
   count_items?: string;
-  count_items_per_view?: "" | "3" | "4";
+  count_items_per_view?: "" | "2" | "3" | "4";
   type?: "" | "drinks" | "food" | "games" | "team" | "partner";
   component: "carousel";
   _uid: string;
@@ -103,6 +103,7 @@ export interface EventBookingStoryblok {
   name?: string;
   phone?: string;
   email?: string;
+  message?: string;
   people?: string;
   time?: string;
   date?: string;
@@ -195,6 +196,7 @@ export interface ReservationStoryblok {
   name?: string;
   phone?: string;
   email?: string;
+  message?: string;
   people?: string;
   time?: string;
   date?: string;

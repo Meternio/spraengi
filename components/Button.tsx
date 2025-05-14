@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/dialog";
 import { useDatasourcesStore } from "@/components/DatasourcesStoreProvider";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import React from "react";
 import * as LucideIcons from "lucide-react";
@@ -30,7 +31,9 @@ const Button: React.FC<{ blok: ButtonStoryblok; className?: string }> = ({
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [success, setSuccess] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
-  const Icon = blok.icon && (LucideIcons[blok.icon as keyof typeof LucideIcons] as React.ElementType);
+  const Icon =
+    blok.icon &&
+    (LucideIcons[blok.icon as keyof typeof LucideIcons] as React.ElementType);
 
   const variant =
     blok.variant === "primary"
@@ -107,9 +110,9 @@ const Button: React.FC<{ blok: ButtonStoryblok; className?: string }> = ({
           } am ${date?.toLocaleDateString("de-DE")} um ${reservationData.time}`,
           content: `Name: ${reservationData.name}<br>Telefon: ${
             reservationData.phone
-          }<br>Email: ${reservationData.email}<br>Anzahl Personen: ${
-            reservationData.people
-          }<br>Uhrzeit: ${
+          }<br>Email: ${reservationData.email}<br>Nachricht: ${
+            reservationData.message
+          }<br>Anzahl Personen: ${reservationData.people}<br>Uhrzeit: ${
             reservationData.time
           }<br>Datum: ${date?.toLocaleDateString("de-DE")}`,
         }),
@@ -128,8 +131,10 @@ const Button: React.FC<{ blok: ButtonStoryblok; className?: string }> = ({
       setDate(new Date());
     } catch (err: unknown) {
       setError(
-        err instanceof Error ? err.message ||
-          "Es gab ein Problem bei der Übermittlung. Bitte versuchen es erneut." : "Unbekannter Fehler"
+        err instanceof Error
+          ? err.message ||
+              "Es gab ein Problem bei der Übermittlung. Bitte versuchen es erneut."
+          : "Unbekannter Fehler"
       );
       console.error(err);
     } finally {
@@ -218,6 +223,12 @@ const Button: React.FC<{ blok: ButtonStoryblok; className?: string }> = ({
                   required
                 />
                 <Input name="email" type="email" placeholder="Email" />
+                <Textarea
+                  name="message"
+                  placeholder="Nachricht"
+                  rows={3}
+                  className="resize-none"
+                />
                 <Input
                   name="people"
                   type="number"

@@ -186,7 +186,11 @@ const Carousel: React.FC<{ blok: CarouselStoryblok }> = ({ blok }) => {
                   className={cn(
                     itemsPerView === 4
                       ? "basis-3/4 md:basis-1/4"
-                      : "basis-4/5 md:basis-2/5 lg:basis-1/3",
+                      : itemsPerView === 3
+                      ? "basis-4/5 md:basis-2/5 lg:basis-1/3"
+                      : itemsPerView === 2
+                      ? "basis-4/5 md:basis-1/2"
+                      : "basis-full",
                     "transition-opacity duration-300",
                     index === 0 ? "ml-6 lg:ml-0" : "",
                     index === countStories - 1 ? "pr-6 lg:pr-0" : ""
@@ -296,7 +300,11 @@ const Carousel: React.FC<{ blok: CarouselStoryblok }> = ({ blok }) => {
                 className={cn(
                   itemsPerView === 4
                     ? "basis-3/4 md:basis-1/4"
-                    : "basis-4/5 md:basis-2/5 lg:basis-1/3",
+                    : itemsPerView === 3
+                    ? "basis-4/5 md:basis-2/5 lg:basis-1/3"
+                    : itemsPerView === 2
+                    ? "basis-4/5 md:basis-1/2"
+                    : "basis-full",
                   "transition-opacity duration-300",
                   index === 0 ? "ml-6 lg:ml-0" : "",
                   index === stories.length - 1 ? "pr-6 lg:pr-0" : ""

@@ -9,7 +9,7 @@ const RESERVATIONS_FOLDER_ID = "668169686";
 export async function POST(request: Request): Promise<Response> {
   try {
     const body: EventBookingStoryblok = await request.json();
-    const { name, phone, email, people, date, time } = body;
+    const { name, phone, email, message, people, date, time } = body;
 
     if (!name || !phone || !people || !date || !time) {
       return NextResponse.json(
@@ -32,6 +32,7 @@ export async function POST(request: Request): Promise<Response> {
           name: name,
           phone: phone,
           email: email || "",
+          message: message || "",
           people: parseInt(people, 10),
           time: time,
           date: new Date(date).toLocaleDateString("de-DE"),
