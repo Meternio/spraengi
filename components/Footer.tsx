@@ -68,21 +68,25 @@ export default function Footer({ pageData }: { pageData: ISbStoryData }) {
 
           <div className="border-t-1 border-white pt-8 md:col-span-3 grid grid-cols-1 md:grid-cols-3 gap-12">
             <div>
-              <Title variant="h3" className="mb-6">Hauptsponsor</Title>
-              <Link
-                href={footerData?.main_sponsor_link?.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Hauptsponsor"
-              >
-                <Image
-                  src={`${footerData?.main_sponsor_image?.filename}/m/200x0`}
-                  alt={footerData?.main_sponsor_image?.alt}
-                  width={200}
-                  height={48}
-                  loading="lazy"
-                />
-              </Link>
+              <Title variant="h3" className="mb-6">
+                Hauptsponsor
+              </Title>
+              {footerData?.main_sponsor_image?.filename && (
+                <Link
+                  href={footerData?.main_sponsor_link?.url || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Hauptsponsor"
+                >
+                  <Image
+                    src={`${footerData?.main_sponsor_image?.filename}/m/200x0`}
+                    alt={footerData?.main_sponsor_image?.alt}
+                    width={200}
+                    height={48}
+                    loading="lazy"
+                  />
+                </Link>
+              )}
             </div>
 
             <div className="md:col-span-2">
