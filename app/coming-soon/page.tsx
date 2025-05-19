@@ -4,7 +4,7 @@ import NewsletterSignup from "@/components/NewsletterSignup"
 import SocialLinks from "@/components/social-links"
 
 export default function Home() {
-  const openingDate = new Date('2025-06-01T00:00:00')
+  const openingDate = new Date('2025-06-28T00:00:00')
   openingDate.setMonth(openingDate.getMonth())
 
   return (
