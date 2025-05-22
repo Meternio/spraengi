@@ -19,10 +19,11 @@ const EventGrid: React.FC<{ blok: EventGridStoryblok }> = ({ blok }) => {
   } = useQuery({
     queryKey: ["events"],
     queryFn: () =>
-      fetchContentType("events/", version, countEvents, undefined, {
+      /*fetchContentType("events/", version, countEvents, undefined, {
         field: "content.date",
         order: "asc",
-      }),
+      }),*/
+      fetchContentType("events/", version, countEvents, undefined, undefined),
     refetchOnWindowFocus: false,
   });
 
@@ -93,7 +94,7 @@ const EventGrid: React.FC<{ blok: EventGridStoryblok }> = ({ blok }) => {
             title: event.name,
             date: event.content.date,
             image: event.content.image,
-            buttons: [
+            /*buttons: [
               {
                 _uid: "button_" + event.uuid,
                 component: "button",
@@ -101,7 +102,7 @@ const EventGrid: React.FC<{ blok: EventGridStoryblok }> = ({ blok }) => {
                 variant: "primary",
                 type: "link",
               },
-            ],
+            ],*/
           }}
         />
       ))}

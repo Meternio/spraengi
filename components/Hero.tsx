@@ -69,6 +69,7 @@ const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
         backgroundAttachment: "fixed",
       }}
     >
+      <div className="absolute inset-0 bg-black/40 z-[1]"></div>
       {blok.youtube_video_id ? (
         <div className="absolute inset-0 overflow-hidden">
           <iframe
