@@ -56,7 +56,7 @@ const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
   }, [isInView]);
 
   return (
-    <section
+    <div
       ref={sectionRef}
       {...storyblokEditable(blok)}
       className="relative min-h-screen w-full overflow-hidden"
@@ -108,7 +108,7 @@ const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
             ))}
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
