@@ -24,11 +24,9 @@ export async function POST(request: Request) {
   revalidateTag(SB_CACHE_VERSION_TAG);
   revalidatePath(correctSlug);
 
-  if (correctSlug.startsWith("/components/")) {
-    await fetch(process.env.VERCEL_REDEPLOY_HOOK_URL!, {
-      method: "POST",
-    });
-  }
+  await fetch(process.env.VERCEL_REDEPLOY_HOOK_URL!, {
+    method: "POST",
+  });
 
   return Response.json({ revalidated: true, now: Date.now() });
 }
