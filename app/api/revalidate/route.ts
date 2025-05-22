@@ -5,7 +5,7 @@ import { SB_CACHE_VERSION_TAG } from "@/lib/cacheTags";
 export async function POST(request: Request) {
   const data = await request.json();
   const { searchParams } = new URL(request.url);
-  const secret = searchParams.get("secret");
+  const secret = searchParams.get("signature");
 
   if (!data || !secret) {
     return Response.json(
