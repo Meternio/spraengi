@@ -26,7 +26,7 @@ const IconBlock: React.FunctionComponent<IconBlockStoryblok> = ({ blok }) => {
     >
       {blok.link ? (
         <Link 
-          href={blok.link.url || '#'}
+          href={blok.link || '#'}
           className="flex flex-row items-center gap-8 w-full h-full"
         >
           {content}
