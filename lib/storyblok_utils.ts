@@ -1,24 +1,12 @@
 import type { ISbStoryData } from "@storyblok/react/rsc";
 import { SB_CACHE_VERSION_TAG } from "@/lib/cacheTags";
 
-let cachedCv: number | undefined;
-let cvCacheTimestamp: number | undefined;
-const CV_CACHE_DURATION = 60 * 1000;
-
 async function getCacheVersion(): Promise<number | undefined> {
-  if (
-    cachedCv &&
-    cvCacheTimestamp &&
-    Date.now() - cvCacheTimestamp < CV_CACHE_DURATION
-  ) {
-    return cachedCv;
-  }
-
   try {
     const response = await fetch(
       `https://api.storyblok.com/v2/cdn/spaces/me?token=${process.env.NEXT_PUBLIC_STORYBLOK_TOKEN}`,
       {
-        next: { revalidate: 60 },
+        next: { tags: [SB_CACHE_VERSION_TAG] },
       }
     );
     if (!response.ok) {
@@ -29,9 +17,8 @@ async function getCacheVersion(): Promise<number | undefined> {
       return undefined;
     }
     const spaceData = await response.json();
-    cachedCv = spaceData.space.version;
-    cvCacheTimestamp = Date.now();
-    return cachedCv;
+    const currentCv = spaceData.space.version;
+    return currentCv;
   } catch (error) {
     console.error("Error fetching Storyblok cache version:", error);
     return undefined;
