@@ -5,9 +5,10 @@ import { HeroStoryblok } from "@/component-types-sb";
 import Button from "@/components/Button";
 import Title from "@/components/Title";
 import React, { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
-  const backgroundImage = blok.image?.filename
+  const backgroundImageSrc = blok.image?.filename
     ? `${blok.image.filename}/m/1600x0/filters:quality(75)`
     : "";
 
@@ -41,36 +42,34 @@ const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
 
   useEffect(() => {
     if (iframeRef.current && iframeRef.current.contentWindow) {
-      if (isInView) {
-        iframeRef.current.contentWindow.postMessage(
-          '{"event":"command","func":"playVideo","args":""}',
-          "*"
-        );
-      } else {
-        iframeRef.current.contentWindow.postMessage(
-          '{"event":"command","func":"pauseVideo","args":""}',
-          "*"
-        );
-      }
+      const action = isInView ? "playVideo" : "pauseVideo";
+      iframeRef.current.contentWindow.postMessage(
+        `{"event":"command","func":"${action}","args":""}`,
+        "*"
+      );
     }
-  }, [isInView]);
+  }, [isInView, youtubeEmbedUrl]);
 
   return (
     <div
       ref={sectionRef}
       {...storyblokEditable(blok)}
       className="relative min-h-screen w-full overflow-hidden"
-      style={{
-        backgroundImage: blok.youtube_video_id
-          ? undefined
-          : `url('${backgroundImage}')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
     >
+      {!blok.youtube_video_id && backgroundImageSrc && (
+        <Image
+          src={backgroundImageSrc}
+          alt={blok.image?.alt || "Background"}
+          layout="fill"
+          objectFit="cover"
+          priority
+          loading="eager"
+        />
+      )}
+
       <div className="absolute inset-0 bg-black/40 z-[1]"></div>
-      {blok.youtube_video_id ? (
+
+      {blok.youtube_video_id && (
         <div className="absolute inset-0 overflow-hidden">
           <iframe
             ref={iframeRef}
@@ -79,7 +78,7 @@ const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
               width: "calc(100vh * (16 / 9))",
               height: "calc(100vw * (9 / 16))",
             }}
-            src={`${youtubeEmbedUrl}`}
+            src={youtubeEmbedUrl}
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -87,7 +86,7 @@ const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
             allowFullScreen
           ></iframe>
         </div>
-      ) : null}
+      )}
 
       {/*
         <div

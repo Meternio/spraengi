@@ -135,6 +135,7 @@ export default function Header({ pageData }: { pageData: ISbStoryData }) {
                 width={256}
                 height={126}
                 loading="eager"
+                priority
                 unoptimized
               />
             </Link>
