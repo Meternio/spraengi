@@ -137,6 +137,7 @@ const PartnerCard = ({ partner, duplicate }: { partner: PartnerStoryblok; duplic
           className="object-contain"
           loading="lazy"
           aria-hidden={duplicate ? true : undefined}
+          unoptimized
         />
       )}
     </div>

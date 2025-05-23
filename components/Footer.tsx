@@ -84,6 +84,7 @@ export default function Footer({ pageData }: { pageData: ISbStoryData }) {
                     width={200}
                     height={48}
                     loading="lazy"
+                    unoptimized
                   />
                 </Link>
               )}
