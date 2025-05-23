@@ -96,6 +96,7 @@ export default function Header({ pageData }: { pageData: ISbStoryData }) {
                         className="object-contain"
                         width={256}
                         height={126}
+                        unoptimized
                       />
                     </Link>
                   </SheetTitle>
@@ -133,6 +134,7 @@ export default function Header({ pageData }: { pageData: ISbStoryData }) {
                 className="object-contain"
                 width={256}
                 height={126}
+                unoptimized
               />
             </Link>
           </div>
@@ -187,6 +189,7 @@ export default function Header({ pageData }: { pageData: ISbStoryData }) {
                         className="object-contain"
                         width={256}
                         height={126}
+                        unoptimized
                       />
                     </Link>
                   </SheetTitle>
@@ -215,6 +218,7 @@ export default function Header({ pageData }: { pageData: ISbStoryData }) {
                 className="object-contain"
                 width={256}
                 height={126}
+                unoptimized
               />
             </Link>
           </div>
