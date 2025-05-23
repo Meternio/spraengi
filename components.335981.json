@@ -106,7 +106,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-10T12:02:58.379Z",
-      "updated_at": "2025-05-10T12:44:46.488Z",
+      "updated_at": "2025-05-22T12:59:09.388Z",
       "id": 7324031,
       "schema": {
         "variant": {
@@ -424,7 +424,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-09T12:50:54.405Z",
-      "updated_at": "2025-05-09T12:59:48.178Z",
+      "updated_at": "2025-05-22T12:59:15.882Z",
       "id": 7321067,
       "schema": {
         "date": {
@@ -462,7 +462,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-11T20:40:34.975Z",
-      "updated_at": "2025-05-14T12:50:11.524Z",
+      "updated_at": "2025-05-14T12:58:03.779Z",
       "id": 7325632,
       "schema": {
         "name": {
@@ -486,7 +486,7 @@
           "id": "RXgGPm0CSuC6oJvi-kWYCg"
         },
         "people": {
-          "type": "text",
+          "type": "number",
           "pos": 4,
           "id": "-miQ9WwOSZ-1juHTl-YUfw"
         },
@@ -645,7 +645,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-10T12:52:15.465Z",
-      "updated_at": "2025-05-10T13:10:20.755Z",
+      "updated_at": "2025-05-22T14:09:37.595Z",
       "id": 7324113,
       "schema": {
         "icon": {
@@ -663,6 +663,11 @@
           "type": "textarea",
           "pos": 2,
           "id": "jm7FsfmaQR6GAU8jWEBzNA"
+        },
+        "link": {
+          "type": "text",
+          "pos": 3,
+          "id": "QKaXXYlPTwumj3tmngbxaw"
         }
       },
       "image": null,
@@ -756,7 +761,7 @@
       "display_name": null,
       "description": null,
       "created_at": "2025-04-21T07:39:21.194Z",
-      "updated_at": "2025-05-11T21:48:23.900Z",
+      "updated_at": "2025-05-14T16:22:11.123Z",
       "id": 7246911,
       "schema": {
         "common": {
@@ -794,7 +799,9 @@
           "keys": [
             "title",
             "icon_blocks",
-            "social_buttons"
+            "social_buttons",
+            "main_sponsor_link",
+            "main_sponsor_image"
           ]
         },
         "logo": {
@@ -849,6 +856,19 @@
             "button"
           ],
           "id": "CKC0OtUYSBKjgkiJBcacjQ"
+        },
+        "main_sponsor_image": {
+          "type": "asset",
+          "pos": 10,
+          "id": "bC8R0o_jSVS24THPeBiIKQ",
+          "filetypes": [
+            "images"
+          ]
+        },
+        "main_sponsor_link": {
+          "type": "multilink",
+          "pos": 11,
+          "id": "WI496qmsRsOYw8QHk2FqXw"
         }
       },
       "image": null,
@@ -872,7 +892,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-10T15:20:26.717Z",
-      "updated_at": "2025-05-10T15:20:41.053Z",
+      "updated_at": "2025-05-14T16:01:35.307Z",
       "id": 7324178,
       "schema": {
         "image": {
@@ -882,6 +902,11 @@
             "images"
           ],
           "id": "vx4ppAg4Q4mSDveDDTtMIA"
+        },
+        "link": {
+          "type": "multilink",
+          "pos": 1,
+          "id": "5LNOuDiTTe-9i_nx06K61A"
         }
       },
       "image": null,
@@ -943,7 +968,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-11T15:24:53.408Z",
-      "updated_at": "2025-05-14T12:50:28.700Z",
+      "updated_at": "2025-05-14T12:57:55.292Z",
       "id": 7325270,
       "schema": {
         "name": {
@@ -967,7 +992,7 @@
           "id": "haKqByhcSti0XOGalDGDIg"
         },
         "people": {
-          "type": "text",
+          "type": "number",
           "pos": 4,
           "id": "IOZM1nElSRSdtUB8L6fJqA"
         },

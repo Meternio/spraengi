@@ -67,13 +67,8 @@ const EventGrid: React.FC<{ blok: EventGridStoryblok }> = ({ blok }) => {
 
   if (!events || events.length === 0) {
     return (
-      <div
-        {...storyblokEditable(blok)}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 min-h-[200px] place-items-center"
-      >
-        <div className="col-span-full text-center text-gray-500">
-          <p>No events found</p>
-        </div>
+      <div {...storyblokEditable(blok)} className="p-6">
+        <p>Momentan haben wir keine Events geplannt!</p>
       </div>
     );
   }

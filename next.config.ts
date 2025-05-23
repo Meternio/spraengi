@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
   images: {
+    qualities: [100],
     remotePatterns: [
       {
         protocol: 'https',
