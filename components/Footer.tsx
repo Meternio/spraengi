@@ -80,7 +80,7 @@ export default function Footer({ pageData }: { pageData: ISbStoryData }) {
                 >
                   <Image
                     src={`${footerData?.main_sponsor_image?.filename}/m/200x0`}
-                    alt={footerData?.main_sponsor_image?.alt}
+                    alt={footerData?.main_sponsor_image?.alt || "Hauptsponsor"}
                     width={200}
                     height={48}
                     loading="lazy"
