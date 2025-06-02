@@ -38,7 +38,7 @@ export default function NewsletterSignup() {
     }
 
     setStatus("success")
-    setMessage("Vielen Dank! Du wirst benachrichtigt, sobald wir eröffnen.")
+    setMessage("Vielen Dank! Du wirst schnellst möglichst benachrichtigt.")
     setEmail("")
   }
 
