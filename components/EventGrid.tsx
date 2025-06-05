@@ -89,6 +89,7 @@ const EventGrid: React.FC<{ blok: EventGridStoryblok }> = ({ blok }) => {
             title: event.name,
             date: event.content.date,
             image: event.content.image,
+            link: event.content?.link || undefined,
             /*buttons: [
               {
                 _uid: "button_" + event.uuid,

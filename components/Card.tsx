@@ -5,6 +5,7 @@ import { CardStoryblok } from "@/component-types-sb";
 import Image from "next/image";
 import Title from "@/components/Title";
 import Button from "@/components/Button";
+import Link from "next/link";
 
 const Card: React.FC<{
   blok: CardStoryblok;
@@ -33,12 +34,8 @@ const Card: React.FC<{
     );
   }
 
-  return (
-    <div
-      {...storyblokEditable(blok)}
-      className={`relative w-full lg:aspect-[1.5/1] rounded-lg overflow-hidden group h-full min-h-100 lg:h-100
-              ${fullWidth ? "md:col-span-2" : ""}`}
-    >
+  const cardContent = (
+    <>
       {blok.image && (
         <Image
           src={String(
@@ -49,7 +46,10 @@ const Card: React.FC<{
           alt={String(blok.image.title)}
           fill
           sizes={blok.fullWidth ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
-          className="object-cover"
+          className={`object-cover ${
+            blok.link
+              && "group-hover:scale-110 transition-transform duration-500 ease-in-out "
+          }`}
           loading="lazy"
         />
       )}
@@ -68,41 +68,60 @@ const Card: React.FC<{
             <Title variant="h2" className="flex-grow xl:max-w-1/2">
               {blok.title}
             </Title>
-            {blok.buttons?.map((button) => (
-              <Button
-                key={button._uid}
-                blok={{
-                  _uid: "button_" + button._uid,
-                  component: "button",
-                  title: button.title,
-                  variant: button.variant,
-                  type: button.type,
-                }}
-                className="w-fit"
-              />
-            ))}
+            {!blok.link &&
+              blok.buttons?.map((button) => (
+                <Button
+                  key={button._uid}
+                  blok={{
+                    _uid: "button_" + button._uid,
+                    component: "button",
+                    title: button.title,
+                    variant: button.variant,
+                    type: button.type,
+                  }}
+                  className="w-fit"
+                />
+              ))}
           </div>
         )}
         {blok.variant === "default" && (
           <div className="text-white flex flex-col h-full justify-end gap-4 md:max-w-1/2">
             <Title variant="h2">{blok.title}</Title>
             <p>{blok.description}</p>
-            {blok.buttons?.map((button) => (
-              <Button
-                key={button._uid}
-                blok={{
-                  _uid: "button_" + button._uid,
-                  component: "button",
-                  title: button.title,
-                  variant: button.variant,
-                  type: button.type,
-                }}
-                className="w-fit"
-              />
-            ))}
+            {!blok.link &&
+              blok.buttons?.map((button) => (
+                <Button
+                  key={button._uid}
+                  blok={{
+                    _uid: "button_" + button._uid,
+                    component: "button",
+                    title: button.title,
+                    variant: button.variant,
+                    type: button.type,
+                  }}
+                  className="w-fit"
+                />
+              ))}
           </div>
         )}
       </div>
+    </>
+  );
+
+  return (
+    <div
+      {...storyblokEditable(blok)}
+      className={`relative w-full lg:aspect-[1.5/1] rounded-lg overflow-hidden group h-full min-h-100 lg:h-100 ${
+        fullWidth ? "md:col-span-2" : ""
+      } ${blok.link ? "cursor-pointer" : ""}`}
+    >
+      {blok.link ? (
+        <Link href={blok.link || "#"} className="block w-full h-full">
+          {cardContent}
+        </Link>
+      ) : (
+        cardContent
+      )}
     </div>
   );
 };

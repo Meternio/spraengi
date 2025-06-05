@@ -44,6 +44,7 @@ export interface CardStoryblok {
   date?: string;
   image?: AssetStoryblok;
   buttons?: ButtonStoryblok[];
+  link?: string;
   component: "card";
   _uid: string;
   [k: string]: any;
@@ -94,6 +95,7 @@ export interface CtaStoryblok {
 export interface EventStoryblok {
   date?: string;
   image?: AssetStoryblok;
+  link?: string;
   component: "event";
   _uid: string;
   [k: string]: any;

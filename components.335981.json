@@ -106,7 +106,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-10T12:02:58.379Z",
-      "updated_at": "2025-05-22T12:59:09.388Z",
+      "updated_at": "2025-06-05T16:02:29.152Z",
       "id": 7324031,
       "schema": {
         "variant": {
@@ -160,6 +160,11 @@
             "button"
           ],
           "id": "GlsNFp1cSLqpdtQoi6fylw"
+        },
+        "link": {
+          "type": "text",
+          "pos": 6,
+          "id": "iZOEy1ynTc6gCF7txEZPQQ"
         }
       },
       "image": null,
@@ -424,7 +429,7 @@
       "display_name": null,
       "description": "",
       "created_at": "2025-05-09T12:50:54.405Z",
-      "updated_at": "2025-05-22T12:59:15.882Z",
+      "updated_at": "2025-06-05T16:08:56.882Z",
       "id": 7321067,
       "schema": {
         "date": {
@@ -439,6 +444,11 @@
             "images"
           ],
           "id": "l7gY0P2xQpOMmfrUxVKyeQ"
+        },
+        "link": {
+          "type": "text",
+          "pos": 2,
+          "id": "WXxJgoRORtm6rFFn8QkCGQ"
         }
       },
       "image": null,
