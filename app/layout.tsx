@@ -18,9 +18,9 @@ const fira_sans = Fira_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "SPRÄNGI BAR & CAFE - Coming Soon",
+  title: "SPRÄNGI BAR & CAFE",
   description:
-    "Die neue Bar Sprängi öffnet bald ihre Türen. Bleibe auf dem Laufenden!",
+    "Entdecken Sie die Bar Sprängi: Wo Kaffeekultur auf Cocktail-Kunst trifft. Erleben Sie außergewöhnliche Getränke, leckere Snacks und eine einzigartige Atmosphäre, die zum Verweilen einlädt.",
 };
 
 export default async function RootLayout({
