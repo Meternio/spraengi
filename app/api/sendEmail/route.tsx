@@ -5,7 +5,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const { to, subject, content, replyTo } = body;
+    const { to, subject, content } = body;
 
     if (!to || !subject || !content) {
       return NextResponse.json(
