@@ -1,10 +1,13 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 
+export const maxDuration = 30;
+
 export async function POST(req: Request) {
   try {
+    console.log("Email API called");
+    
     const body = await req.json();
-
     const { to, subject, content, replyTo } = body;
 
     if (!to || !subject || !content) {
@@ -14,6 +17,16 @@ export async function POST(req: Request) {
       );
     }
 
+    // Validate environment variables
+    if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+      console.error("Missing SMTP environment variables");
+      return NextResponse.json(
+        { error: "Server configuration error" },
+        { status: 500 }
+      );
+    }
+
+    console.log("Creating transporter...");
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT) || 465,
@@ -22,28 +35,41 @@ export async function POST(req: Request) {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
-      pool: true,
-      maxConnections: 1,
-      rateDelta: 20000,
-      rateLimit: 5,
+      connectionTimeout: 10000,
+      socketTimeout: 10000,
     });
 
+    console.log("Sending email...");
     const info = await transporter.sendMail({
       from: process.env.SMTP_USER,
       to,
       ...(replyTo && { replyTo }),
       subject,
-      html: `${content}`,
+      html: content,
     });
 
+    console.log("Email sent successfully:", info.messageId);
     return NextResponse.json(
-      { message: "Email sent successfully", info },
+      { 
+        success: true,
+        message: "Email sent successfully", 
+        messageId: info.messageId 
+      },
       { status: 200 }
     );
+
   } catch (error: unknown) {
-    console.error("Error sending email:", error);
+    console.error("Email API error:", error);
+    
+    // Always return JSON, even on error
+    const errorMessage = error instanceof Error ? error.message : "Unknown error occurred";
+    
     return NextResponse.json(
-      { error: "Failed to send email", details: error instanceof Error ? error.message : "Unknown error" },
+      { 
+        success: false,
+        error: "Failed to send email", 
+        details: errorMessage 
+      },
       { status: 500 }
     );
   }
