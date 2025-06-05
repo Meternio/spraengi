@@ -5,11 +5,11 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const { to, subject, content } = body;
+    const { to, subject, content, replyTo } = body;
 
     if (!to || !subject || !content) {
       return NextResponse.json(
-        { error: "Missing required fields: to, from, subject, or content" },
+        { error: "Missing required fields: to, subject, or content" },
         { status: 400 }
       );
     }
@@ -27,6 +27,7 @@ export async function POST(req: Request) {
     const info = await transporter.sendMail({
       from: process.env.SMTP_USER,
       to,
+      replyTo: replyTo || process.env.SMTP_USER,
       subject,
       html: `${content}`,
     });

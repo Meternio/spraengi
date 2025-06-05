@@ -78,6 +78,7 @@ const ButtonReserve = ({ children, variant, ...props }: ButtonProps) => {
         },
         body: JSON.stringify({
           to: datasources?.reserve.emailTo,
+          replyTo: reservationData.email,
           subject: `Reservierung von ${
             reservationData.name
           } am ${date?.toLocaleDateString("de-DE")} um ${reservationData.time}`,
@@ -137,7 +138,7 @@ const ButtonReserve = ({ children, variant, ...props }: ButtonProps) => {
           <form className="grid gap-4" onSubmit={handleSubmit}>
             <Input name="name" type="text" placeholder="Name *" required />
             <Input name="phone" type="tel" placeholder="Telefon *" required />
-            <Input name="email" type="email" placeholder="Email" />
+            <Input name="email" type="email" placeholder="Email *" required/>
             <Textarea
               name="message"
               placeholder="Nachricht"
@@ -156,6 +157,7 @@ const ButtonReserve = ({ children, variant, ...props }: ButtonProps) => {
               selected={date}
               onSelect={setDate}
               className="rounded-md border w-fit"
+              required={true}
             />
 
             <Button type="submit" variant="default" disabled={isSubmitting}>

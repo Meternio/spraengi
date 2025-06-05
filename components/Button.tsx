@@ -105,6 +105,7 @@ const Button: React.FC<{ blok: ButtonStoryblok; className?: string }> = ({
         },
         body: JSON.stringify({
           to: datasources["event-booking"]?.emailTo,
+          replyTo: reservationData.email,
           subject: `Event Booking von ${
             reservationData.name
           } am ${date?.toLocaleDateString("de-DE")} um ${reservationData.time}`,
@@ -222,7 +223,7 @@ const Button: React.FC<{ blok: ButtonStoryblok; className?: string }> = ({
                   placeholder="Telefon *"
                   required
                 />
-                <Input name="email" type="email" placeholder="Email" />
+                <Input name="email" type="email" placeholder="Email *" required />
                 <Textarea
                   name="message"
                   placeholder="Nachricht"
@@ -246,6 +247,7 @@ const Button: React.FC<{ blok: ButtonStoryblok; className?: string }> = ({
                   selected={date}
                   onSelect={setDate}
                   className="rounded-md border w-fit"
+                  required={true}
                 />
 
                 <ButtonComponent
