@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     const info = await transporter.sendMail({
       from: process.env.SMTP_USER,
       to,
-      replyTo: replyTo || process.env.SMTP_USER,
+      ...(replyTo && { replyTo }),
       subject,
       html: `${content}`,
     });
