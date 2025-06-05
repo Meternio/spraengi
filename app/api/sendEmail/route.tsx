@@ -5,7 +5,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const { to, subject, content } = body;
+    const { to, subject, content, replyTo } = body;
 
     if (!to || !subject || !content) {
       return NextResponse.json(
@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     const info = await transporter.sendMail({
       from: process.env.SMTP_USER,
       to,
-      //...(replyTo && { replyTo }),
+      ...(replyTo && { replyTo }),
       subject,
       html: `${content}`,
     });
