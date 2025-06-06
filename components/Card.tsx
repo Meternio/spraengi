@@ -43,7 +43,7 @@ const Card: React.FC<{
               fullWidth ? "1600x0" : "800x0"
             }/filters:quality(75)`
           )}
-          alt={String(blok.image.title)}
+          alt={String(blok.image.title || blok.title)}
           fill
           sizes={blok.fullWidth ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
           className={`object-cover ${
