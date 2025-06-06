@@ -96,9 +96,17 @@ const Hero: React.FC<{ blok: HeroStoryblok }> = ({ blok }) => {
         >
       */}
       <div
-        className={`w-80 h-screen min-h-fit pt-[clamp(245px,35vh,350px)] pb-20 gap-4 mx-auto flex flex-col items-center justify-between text-center relative z-10`}
+        className={`px-6 lg:px-16 md:w-2/3 h-screen min-h-fit pt-[clamp(245px,35vh,350px)] pb-20 gap-4 mx-auto flex flex-col items-center justify-between text-center relative z-10`}
       >
-        <Title variant="h1">{blok.title}</Title>
+        <div className="flex flex-col gap-4 items-center">
+          <Title variant="h1">{blok.title}</Title>
+          
+          {blok.description && (
+            <p className="text-white text-lg max-w-md leading-relaxed">
+              {blok.description}
+            </p>
+          )}
+        </div>
 
         <div className="flex flex-col w-64 justify-center gap-4">
           {blok.buttons &&

@@ -133,6 +133,7 @@ export interface HeroStoryblok {
   image?: AssetStoryblok;
   youtube_video_id?: string;
   title?: string;
+  description?: string;
   buttons?: ButtonStoryblok[];
   component: "hero";
   _uid: string;

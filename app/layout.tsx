@@ -18,7 +18,7 @@ const fira_sans = Fira_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "SPRÄNGI BAR & CAFE - Cocktails & Kaffee in Zürich Oberland",
+  title: "SPRÄNGI BAR & CAFE - Cocktails & Kaffee im Zürich Oberland",
   description:
     "Entdecken die Bar Sprängi: Wo Kaffeekultur auf Cocktail-Kunst trifft. Erleben außergewöhnliche Getränke, leckere Snacks und eine einzigartige Atmosphäre.",
   applicationName: "SPRÄNGI BAR & CAFE",
