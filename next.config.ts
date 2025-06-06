@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   productionBrowserSourceMaps: true,
+  poweredByHeader: false,
   images: {
     qualities: [100],
     remotePatterns: [
