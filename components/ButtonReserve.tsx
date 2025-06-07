@@ -13,6 +13,7 @@ import { useDatasourcesStore } from "@/components/DatasourcesStoreProvider";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
+import { Label } from "@/components/ui/label";
 import React from "react";
 import { ReservationStoryblok } from "@/component-types-sb";
 
@@ -29,9 +30,21 @@ const ButtonReserve = ({ children, variant, ...props }: ButtonProps) => {
   const [success, setSuccess] = React.useState<string | null>(null);
   const [error, setError] = React.useState<string | null>(null);
   const [isOpen, setIsOpen] = React.useState(false);
-  
+
   // Generate unique ID for this modal instance
-  const [modalId] = React.useState(() => Math.random().toString(36).substr(2, 9));
+  const [modalId] = React.useState(() =>
+    Math.random().toString(36).substr(2, 9)
+  );
+
+  // Function to format date in German
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString("de-DE", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
 
   // Function to update state when global modal changes
   const updateModalState = React.useCallback(() => {
@@ -43,12 +56,12 @@ const ButtonReserve = ({ children, variant, ...props }: ButtonProps) => {
     modalListeners.add(updateModalState);
 
     const checkHash = () => {
-      if (window.location.hash === '#reserve') {
+      if (window.location.hash === "#reserve") {
         // Only open this modal if no other modal is currently open
         if (globalModalId === null) {
           globalModalId = modalId;
           // Notify all modals to update their state
-          modalListeners.forEach(listener => listener());
+          modalListeners.forEach((listener) => listener());
         }
       }
     };
@@ -57,13 +70,13 @@ const ButtonReserve = ({ children, variant, ...props }: ButtonProps) => {
     checkHash();
 
     // Listen for hash changes
-    window.addEventListener('hashchange', checkHash);
+    window.addEventListener("hashchange", checkHash);
 
     return () => {
       // Clean up
       modalListeners.delete(updateModalState);
-      window.removeEventListener('hashchange', checkHash);
-      
+      window.removeEventListener("hashchange", checkHash);
+
       // If this modal was the open one, clear the global state
       if (globalModalId === modalId) {
         globalModalId = null;
@@ -79,21 +92,25 @@ const ButtonReserve = ({ children, variant, ...props }: ButtonProps) => {
         globalModalId = modalId;
         setIsOpen(true);
         // Notify other modals
-        modalListeners.forEach(listener => listener());
+        modalListeners.forEach((listener) => listener());
       }
     } else {
       // Close this modal
       if (globalModalId === modalId) {
         globalModalId = null;
         setIsOpen(false);
-        
+
         // Remove hash if present
-        if (window.location.hash === '#reserve') {
-          window.history.replaceState(null, '', window.location.pathname + window.location.search);
+        if (window.location.hash === "#reserve") {
+          window.history.replaceState(
+            null,
+            "",
+            window.location.pathname + window.location.search
+          );
         }
-        
+
         // Notify other modals
-        modalListeners.forEach(listener => listener());
+        modalListeners.forEach((listener) => listener());
       }
     }
   };
@@ -209,29 +226,103 @@ const ButtonReserve = ({ children, variant, ...props }: ButtonProps) => {
           </div>
         ) : (
           <form className="grid gap-4" onSubmit={handleSubmit}>
-            <Input name="name" type="text" placeholder="Name *" required />
-            <Input name="phone" type="tel" placeholder="Telefon *" required />
-            <Input name="email" type="email" placeholder="Email *" required/>
-            <Textarea
-              name="message"
-              placeholder="Nachricht"
-              rows={3}
-              className="resize-none"
-            />
-            <Input
-              name="people"
-              type="number"
-              placeholder="Anzahl Personen *"
-              required
-            />
-            <Input name="time" type="time" placeholder="Uhrzeit *" required />
-            <Calendar
-              mode="single"
-              selected={date}
-              onSelect={setDate}
-              className="rounded-md border w-fit"
-              required={true}
-            />
+            <div className="grid gap-2">
+              <Label htmlFor="name">Name *</Label>
+              <Input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Name"
+                required
+              />
+            </div>
+
+            <div className="grid gap-2">
+              <Label htmlFor="phone">Telefon *</Label>
+              <Input
+                id="phone"
+                name="phone"
+                type="tel"
+                placeholder="Telefon"
+                required
+              />
+            </div>
+
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email *</Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Email"
+                required
+              />
+            </div>
+
+            <div className="grid gap-2">
+              <Label htmlFor="message">Nachricht</Label>
+              <Textarea
+                id="message"
+                name="message"
+                placeholder="Nachricht"
+                rows={3}
+                className="resize-none"
+              />
+            </div>
+
+            <div className="grid gap-2">
+              <Label htmlFor="people">Anzahl Personen *</Label>
+              <Input
+                id="people"
+                name="people"
+                type="number"
+                placeholder="Anzahl Personen"
+                required
+              />
+            </div>
+
+            <div className="grid gap-2">
+              <Label htmlFor="time">Uhrzeit *</Label>
+              <Input
+                id="time"
+                name="time"
+                type="time"
+                placeholder="Uhrzeit"
+                defaultValue="18:00"
+                required
+                className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+              />
+            </div>
+
+            <div className="grid gap-2">
+              <Label>Datum *</Label>
+
+              <Input
+                className="w-full justify-start text-left font-normal"
+                value={date ? formatDate(date) : "Datum wählen"}
+                readOnly
+              />
+
+              <Calendar
+                mode="single"
+                selected={date}
+                onSelect={(selectedDate) => {
+                  setDate(selectedDate);
+                }}
+                disabled={(date) =>
+                  date < new Date(new Date().setHours(0, 0, 0, 0))
+                }
+                formatters={{
+                  formatWeekdayName: (date) =>
+                    date.toLocaleDateString("de-DE", { weekday: "short" }),
+                  formatMonthCaption: (date) =>
+                    date.toLocaleDateString("de-DE", {
+                      month: "long",
+                      year: "numeric",
+                    }),
+                }}
+              />
+            </div>
 
             <Button type="submit" variant="default" disabled={isSubmitting}>
               {isSubmitting ? "Wird gesendet..." : "Reservieren"}

@@ -18,6 +18,7 @@ import { useDatasourcesStore } from "@/components/DatasourcesStoreProvider";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
+import { Label } from "@/components/ui/label";
 import React from "react";
 import * as LucideIcons from "lucide-react";
 import { EventBookingStoryblok } from "@/component-types-sb";
@@ -51,6 +52,16 @@ const Button: React.FC<{ blok: ButtonStoryblok; className?: string }> = ({
     "rounded-full uppercase cursor-pointer",
     className
   );
+
+  // Function to format date in German
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString("de-DE", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -216,39 +227,103 @@ const Button: React.FC<{ blok: ButtonStoryblok; className?: string }> = ({
               </div>
             ) : (
               <form className="grid gap-4" onSubmit={handleSubmit}>
-                <Input name="name" type="text" placeholder="Name *" required />
-                <Input
-                  name="phone"
-                  type="tel"
-                  placeholder="Telefon *"
-                  required
-                />
-                <Input name="email" type="email" placeholder="Email *" required />
-                <Textarea
-                  name="message"
-                  placeholder="Nachricht"
-                  rows={3}
-                  className="resize-none"
-                />
-                <Input
-                  name="people"
-                  type="number"
-                  placeholder="Anzahl Personen *"
-                  required
-                />
-                <Input
-                  name="time"
-                  type="time"
-                  placeholder="Uhrzeit *"
-                  required
-                />
-                <Calendar
-                  mode="single"
-                  selected={date}
-                  onSelect={setDate}
-                  className="rounded-md border w-fit"
-                  required={true}
-                />
+                <div className="grid gap-2">
+                  <Label htmlFor="event-name">Name *</Label>
+                  <Input
+                    id="event-name"
+                    name="name"
+                    type="text"
+                    placeholder="Name"
+                    required
+                  />
+                </div>
+
+                <div className="grid gap-2">
+                  <Label htmlFor="event-phone">Telefon *</Label>
+                  <Input
+                    id="event-phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="Telefon"
+                    required
+                  />
+                </div>
+
+                <div className="grid gap-2">
+                  <Label htmlFor="event-email">Email *</Label>
+                  <Input
+                    id="event-email"
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    required
+                  />
+                </div>
+
+                <div className="grid gap-2">
+                  <Label htmlFor="event-message">Nachricht</Label>
+                  <Textarea
+                    id="event-message"
+                    name="message"
+                    placeholder="Nachricht"
+                    rows={3}
+                    className="resize-none"
+                  />
+                </div>
+
+                <div className="grid gap-2">
+                  <Label htmlFor="event-people">Anzahl Personen *</Label>
+                  <Input
+                    id="event-people"
+                    name="people"
+                    type="number"
+                    placeholder="Anzahl Personen"
+                    required
+                  />
+                </div>
+
+                <div className="grid gap-2">
+                  <Label htmlFor="event-time">Uhrzeit *</Label>
+                  <Input
+                    id="event-time"
+                    name="time"
+                    type="time"
+                    placeholder="Uhrzeit"
+                    defaultValue="18:00"
+                    required
+                    className="bg-background appearance-none [&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-calendar-picker-indicator]:appearance-none"
+                  />
+                </div>
+
+                <div className="grid gap-2">
+                  <Label>Datum *</Label>
+
+                  <Input
+                    className="w-full justify-start text-left font-normal"
+                    value={date ? formatDate(date) : "Datum wählen"}
+                    readOnly
+                  />
+
+                  <Calendar
+                    mode="single"
+                    selected={date}
+                    onSelect={(selectedDate) => {
+                      setDate(selectedDate);
+                    }}
+                    disabled={(date) =>
+                      date < new Date(new Date().setHours(0, 0, 0, 0))
+                    }
+                    formatters={{
+                      formatWeekdayName: (date) =>
+                        date.toLocaleDateString("de-DE", { weekday: "short" }),
+                      formatMonthCaption: (date) =>
+                        date.toLocaleDateString("de-DE", {
+                          month: "long",
+                          year: "numeric",
+                        }),
+                    }}
+                  />
+                </div>
 
                 <ButtonComponent
                   type="submit"
