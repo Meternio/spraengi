@@ -116,7 +116,7 @@ const Card: React.FC<{
       } ${blok.link ? "cursor-pointer" : ""}`}
     >
       {blok.link ? (
-        <Link href={blok.link || "#"} className="block w-full h-full">
+        <Link href={blok.link || "#"} className="block w-full h-full min-h-inherit">
           {cardContent}
         </Link>
       ) : (
