@@ -40,14 +40,14 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="de">
-      <body className={`${fira_sans.variable} ${klavika.variable} font-sans dark max-w-[2000px] mx-auto`}>
-        <StoryblokProvider>
-          <StoryblokClientProvider>
+    <StoryblokProvider>
+      <StoryblokClientProvider>
+        <html lang="de">
+          <body className={`${fira_sans.variable} ${klavika.variable} font-sans dark max-w-[2000px] mx-auto`}>
             <QueryProvider>{children}</QueryProvider>
-          </StoryblokClientProvider>
-        </StoryblokProvider>
-      </body>
-    </html>
+          </body>
+        </html>
+      </StoryblokClientProvider>
+    </StoryblokProvider>
   );
 }
