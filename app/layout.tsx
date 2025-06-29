@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Fira_Sans } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
-import StoryblokProvider from "@/components/StoryblokProvider";
 import StoryblokClientProvider from "@/components/StoryblokClientProvider";
 import QueryProvider from "@/components/QueryProvider";
 
@@ -42,11 +41,9 @@ export default async function RootLayout({
   return (
     <html lang="de">
       <body className={`${fira_sans.variable} ${klavika.variable} font-sans dark max-w-[2000px] mx-auto`}>
-        <StoryblokProvider>
           <StoryblokClientProvider>
             <QueryProvider>{children}</QueryProvider>
           </StoryblokClientProvider>
-        </StoryblokProvider>
       </body>
     </html>
   );
